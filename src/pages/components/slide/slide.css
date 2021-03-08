@@ -1,0 +1,18 @@
+.each-slide > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    height: 58vh;
+  }
+  
+  .each-slide span {
+    padding: 20px;
+    font-size: 2em;
+    background: rgba(255, 255, 255, .5);
+    color: #383838;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    padding: 0 3%;
+  }

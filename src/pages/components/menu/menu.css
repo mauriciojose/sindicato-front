@@ -1,0 +1,37 @@
+header.menu {
+    width: 80% !important;
+    margin: 0 10% !important;
+}
+
+.imoge {
+    margin: 0 !important;
+}
+
+.imoge a svg {
+    font-size: 2em !important;
+}
+
+.menu-logo {
+    background: transparent !important;
+    align-items: center !important;
+    justify-content: center !important;
+    display: inline-flex !important;
+    width: 100% !important;
+}
+
+.img-menu {
+    width: calc(100% - 55%) !important;
+}
+
+.filie {
+    display: inline-flex !important;
+}
+
+.filie :nth-child(1){
+    margin-right: 1%;
+}
+
+.img-filie {
+    width: calc(48%+12%) !important;
+    height: 30px !important;
+}
