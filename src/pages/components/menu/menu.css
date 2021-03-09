@@ -1,6 +1,5 @@
 header.menu {
-    width: 80% !important;
-    margin: 0 10% !important;
+    width: 100% !important;
 }
 
 .imoge {
@@ -8,16 +7,17 @@ header.menu {
 }
 
 .imoge a svg {
-    font-size: 2em !important;
+    font-size: 3.9vw !important;
 }
 
 .menu-logo {
     background: transparent !important;
     align-items: center !important;
     justify-content: center !important;
-    display: inline-flex !important;
+    display: flex !important;
     width: 100% !important;
 }
+
 
 .img-menu {
     width: calc(100% - 55%) !important;
@@ -33,5 +33,12 @@ header.menu {
 
 .img-filie {
     width: calc(48%+12%) !important;
-    height: 30px !important;
+    height: 2.6em;
 }
+
+header.menu div.menu-logo div.imoge a{
+    text-decoration: none;
+} 
+header.menu div.menu-logo div.imoge a svg:hover{
+    transform: scale(1.13);
+} 

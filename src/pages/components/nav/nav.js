@@ -10,7 +10,7 @@ class Nav extends React.Component{
                 <div className="menu-slide">
                     <ul>
                         <li className="menu-item"><a href=""> O sindicato</a></li>
-                        <li className="menu-item"><a href="noticia.html">Noticias</a></li>
+                        <li className="menu-item"><a href="">Noticias</a></li>
                         <li className="menu-item"><a href=""> Serviços</a></li>
                         <li className="menu-item"><a href="/gallery"> Galeria</a></li>
                         <li className="menu-item"><a href=""> Parceiros</a></li>
