@@ -69,13 +69,7 @@ class Dropzone extends React.Component{
             onClick={this.openFileDialog}
             style={{ cursor: this.props.disabled ? "default" : "pointer" }}
           >
-            <input
-              ref={this.fileInputRef}
-              className="FileInput"
-              type="file"
-              multiple
-              onChange={this.onFilesAdded}
-            />
+            {this.getInput()}
             <img
               alt="upload"
               className="Icon"
@@ -83,6 +77,20 @@ class Dropzone extends React.Component{
             />
             <span>Upload Files</span>
           </div>
+        );
+      }
+
+      getInput(){
+        let multiple = this.props.type ? {} : {multiple:'multiple'};
+        // console.log(multiple);
+        return(
+          <input
+              ref={this.fileInputRef}
+              className="FileInput"
+              type="file"
+              {...multiple}
+              onChange={this.onFilesAdded}
+            />
         );
       }
 }

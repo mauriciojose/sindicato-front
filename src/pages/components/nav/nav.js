@@ -9,12 +9,12 @@ class Nav extends React.Component{
                 <a href="#" className="menu-btn"><i className="fa fa-bars fa-lg"></i></a>
                 <div className="menu-slide">
                     <ul>
-                        <li className="menu-item"><a href=""> O sindicato</a></li>
+                        <li className="menu-item"><a href="/"> O sindicato</a></li>
                         <li className="menu-item"><a href="">Noticias</a></li>
-                        <li className="menu-item"><a href=""> Serviços</a></li>
+                        <li className="menu-item"><a href="/servicos"> Serviços</a></li>
                         <li className="menu-item"><a href="/gallery"> Galeria</a></li>
                         <li className="menu-item"><a href=""> Parceiros</a></li>
-                        <li className="menu-item"><a href=""> Contato</a></li>
+                        <li className="menu-item"><a href="/contato"> Contato</a></li>
     
                     </ul>
                 </div>

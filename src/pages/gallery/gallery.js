@@ -35,7 +35,6 @@ class Gallery extends React.Component{
             'Content-Type': 'text/json'
         };
         axios.get("/gallery",{headers}).then(res => {
-            console.log(res.data);
             this.setState({ gallerys: res.data });
 
         }).catch((error) => {

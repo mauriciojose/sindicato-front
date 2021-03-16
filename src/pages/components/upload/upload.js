@@ -28,9 +28,18 @@ class Upload extends React.Component{
       }
     
       onFilesAdded(files) {
-        this.setState(prevState => ({
-          files: prevState.files.concat(files)
-        }));
+        if (this.props.type=='simple') {
+          let filesNew = [];
+          filesNew.push(files[0]);
+          this.setState(prevState => ({
+            files: filesNew
+          }));
+        } else {
+          this.setState(prevState => ({
+            files: prevState.files.concat(files)
+          }));
+        }
+        
       }
     
       async uploadFiles() {
@@ -112,7 +121,7 @@ class Upload extends React.Component{
                 <span className="Title">Selecione as Fotos</span>
                 <div className="Content">
                 <div>
-                    <Dropzone
+                    <Dropzone type={this.props.type}
                     onFilesAdded={this.onFilesAdded}
                     disabled={this.state.uploading || this.state.successfullUploaded}
                     />

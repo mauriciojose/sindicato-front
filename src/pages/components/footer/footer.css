@@ -9,3 +9,7 @@
 .footer img {
     width: 10% !important;
 }
+
+section.footer p{
+    margin-bottom: 0 !important;
+}
