@@ -5,6 +5,8 @@
 section.menu {
     background: linear-gradient( 45deg, #e67b2ce0, #e96500);
     color: white;
+    height: 20%;
+    width: 100%;
 }
 
 nav {
@@ -15,7 +17,7 @@ nav {
 }
 
 nav ul {
-    display: inline-flex !important;
+    display: inline-flex;
 }
 
 nav ul li {
@@ -24,15 +26,37 @@ nav ul li {
     padding: 0 20px;
 }
 
-nav a {
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+}
+
+nav li {
     color: #ffffff;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 1.15em;
+    text-decoration: none;
+}
+nav li a {
+    color: #ffffff;
+    font-weight: bold;
+    /* font-size: 1.15em; */
     text-decoration: none;
 }
 
-nav a:hover {
+nav li a:hover {
     color: red;
-    text-decoration: underline;
+    /* background-color: red; */
+    text-decoration: none;
+}
+nav li:hover {
+    color: red;
+    /* background-color: red; */
+    text-decoration: none;
+}
+
+nav li:hover > div div.dropdown label div.drop-title div#triangulo-para-baixo{
+    border-bottom-color: red !important;
+    border-top-color: red;
 }
 

@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './upload.css'
 
 import Dropzone from '../dropzone/dropzone'
 
 import Progress from '../progress/progress'
 
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 class Upload extends React.Component{
 
@@ -14,7 +20,10 @@ class Upload extends React.Component{
           files: [],
           uploading: false,
           uploadProgress: {},
-          successfullUploaded: false
+          successfullUploaded: false,
+          modal: false,
+          imageAtual: '',
+          message: false
         };
     
         this.onFilesAdded = this.onFilesAdded.bind(this);
@@ -118,29 +127,76 @@ class Upload extends React.Component{
     render(){
         return (
             <div className="Upload">
-                <span className="Title">Selecione as Fotos</span>
+                <div className="titleUpload">
+                  <span className="Title">Selecione as Fotos</span>
+                  <a className="visualizar" onClick={this.toggle}>Visualizar as Fotos</a>
+                </div>
                 <div className="Content">
-                <div>
-                    <Dropzone type={this.props.type}
-                    onFilesAdded={this.onFilesAdded}
-                    disabled={this.state.uploading || this.state.successfullUploaded}
-                    />
+                  <div>
+                      <Dropzone type={this.props.type}
+                      onFilesAdded={this.onFilesAdded}
+                      disabled={this.state.uploading || this.state.successfullUploaded}
+                      />
+                  </div>
+                  <div className="Files">
+                      {this.state.files.map(file => {
+                      return (
+                          <div key={file.name} className="Row">
+                          <span className="Filename">{file.name}</span>
+                          {this.renderProgress(file)}
+                          </div>
+                      );
+                      })}
+                  </div>
                 </div>
-                <div className="Files">
-                    {this.state.files.map(file => {
-                    return (
-                        <div key={file.name} className="Row">
-                        <span className="Filename">{file.name}</span>
-                        {this.renderProgress(file)}
-                        </div>
-                    );
-                    })}
-                </div>
-                </div>
-                {/* <div className="Actions">{this.renderActions()}</div> */}
+
+                {this.state.message ? this.onMessageDeleteFile() : <Fragment></Fragment>}
+
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className='modalFotos'>
+                  <ModalHeader toggle={this.toggle}>Fotos</ModalHeader>
+                  <ModalBody>
+                    <div style={{width: '100%',height: '68%', position: 'relative'}}>
+                      <div onClick={this.setMessageState.bind(this)} title="Remover Imagem" className="btn-lixeira" style={{display: 'flex',alignItems:'center', justifyContent:'center', width: '50px',height: '50px', position: 'absolute',background:'red',right:'-8px',top:'-8px', borderRadius: '40px'}}>
+                        <FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faTrash} />
+                      </div>
+                      <img style={{width: '100%',height: '68%'}} src={`http://localhost:3333/news/${this.props.img}`} alt=""/>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter>
+                    {/* <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '} */}
+                    <Button color="danger" onClick={this.toggle}>Fechar</Button>
+                  </ModalFooter>
+                </Modal>
+
             </div>
           ); 
     }
+
+    setMessageState(){
+      this.setState({message: true});
+    }
+    onCancel(){
+      this.setState({message: false});
+    }
+
+    onMessageDeleteFile(){
+      return (
+        <SweetAlert
+        warning
+        showCancel
+        confirmBtnText="Sim, Remover!"
+        confirmBtnBsStyle="danger"
+        title="Deseja Realmente Remover a Imagem?"
+        onConfirm={this.props.deleteFile}
+        onCancel={this.onCancel.bind(this)}
+        focusCancelBtn
+      >
+        A imagem será removida permanentemente do sistema!
+      </SweetAlert>
+      );
+    }
+
+    toggle = () => this.setState({ modal: !this.state.modal });
 }
 
 export default Upload;

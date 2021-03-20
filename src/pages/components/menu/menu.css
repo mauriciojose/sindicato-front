@@ -7,7 +7,18 @@ header.menu {
 }
 
 .imoge a svg {
-    font-size: 3.9vw !important;
+    font-size: 3.4vw !important;
+}
+
+@media screen and (max-width:808px) {
+    .imoge a svg {
+        font-size: 3.9vw !important;
+    }
+}
+@media screen and (max-width:521px) {
+    .imoge a svg {
+        font-size: 4.4vw !important;
+    }
 }
 
 .menu-logo {
@@ -20,7 +31,8 @@ header.menu {
 
 
 .img-menu {
-    width: calc(100% - 55%) !important;
+    width: calc(100% - 67%) !important;
+    cursor: pointer;
 }
 
 .filie {
@@ -33,7 +45,7 @@ header.menu {
 
 .img-filie {
     width: calc(48%+12%) !important;
-    height: 2.6em;
+    height: 2.4em;
 }
 
 header.menu div.menu-logo div.imoge a{

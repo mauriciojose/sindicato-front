@@ -9,6 +9,8 @@ import Diretoria from './pages/diretoria/diretoria';
 import Servicos from './pages/servicos/servicos';
 import Contato from './pages/contato/contato';
 
+import News from './pages/news/news';
+
 import FormGallery from './pages/gallery/formGallery';
 import FormNews from './pages/news/newsForm';
 
@@ -24,7 +26,9 @@ ReactDOM.render(
       <Route path="/gallery" exact={true} component={Gallery} />
       <Route path="/gallery/create" component={FormGallery} />
 
-      <Route path="/news/create" component={FormNews} />
+      <Route path="/news" exact={true} component={News} />
+      <Route path="/news/create" exact={true} component={FormNews} />
+      <Route path="/news/edit/:id" exact={true} component={FormNews} />
     </Switch>
   </BrowserRouter>
   ,document.getElementById('root')

@@ -1,21 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap');
 *{
   margin: 0;
   padding: 0;
   outline: 0;
   box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
 }
 
 body ,#root {
   width: 100%;
+  height: 100vh;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap'); */
+
 
 body {
   margin: 0;
-  font-family: 'Roboto Mono', monospace;
+  /* font-family: 'Roboto Mono', monospace; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: .5em;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #f3752b;
+  /* outline: 1px solid slategrey; */
+  border-radius: 20px;
 }
 
 code {

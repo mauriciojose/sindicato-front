@@ -3,7 +3,7 @@ import './menu.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp, faFacebook, faYoutube, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands';
 
-import Nav from '../nav/nav';
+import Nav from '../navNew/navNew';
 
 class Menu extends React.Component{
     render(){
@@ -19,7 +19,7 @@ class Menu extends React.Component{
                             <a href=""> {this.getInstagram()} </a>
                             
                         </div>
-                        <img className="img-menu" src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""></img>
+                        <img className="img-menu" onClick={()=>{ window.location='/' }} src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""></img>
                         <div className="filie">
                             <a className="filie-a" href=""><img className="img-filie" src={process.env.PUBLIC_URL + '/botao_filiacao.png'} alt="" /></a>
                             <a className="filie-a" href=""><img className="img-filie" src={process.env.PUBLIC_URL + '/botao_pesquisar.png'} alt="" /></a>

@@ -35,6 +35,18 @@ class FormGallery extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        // const { match: { params } } = this.props;
+      
+        // axios.get(`/api/users/${params.userId}`)
+        //   .then(({ data: user }) => {
+        //     console.log('user', user);
+      
+        //     this.setState({ user });
+        //   });
+      }
+      
+
       handleChange(event) {
         this.setState({titulo: event.target.value});
       }
@@ -68,8 +80,8 @@ class FormGallery extends React.Component{
             let form = <Form onSubmit={this.handleSubmit}>
                             <Row>
                                 <Col>
-                                    <Label for="email">Álbum</Label>
-                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do álbum" />
+                                    <Label for="email">Ã�lbum</Label>
+                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do Ã¡lbum" />
                                 </Col>
                             </Row>
                             <Row>
@@ -77,12 +89,12 @@ class FormGallery extends React.Component{
                                     <Upload  ref={this.photos}  key={Math.random()} />
                                 </Col>
                                 <Col sm={4} className='align-end-right'>
-                                    <ButtonToggle type='submit' color="success">Salvar Álbum</ButtonToggle>
+                                    <ButtonToggle type='submit' color="success">Salvar Ã�lbum</ButtonToggle>
                                 </Col>
                             </Row>
                         </Form>;
         return  ( 
-            <Container ref={this.container}  title="Criar Álbum" main={form}/>
+            <Container ref={this.container}  title="Criar Ã�lbum" main={form}/>
         );
     }
 }

@@ -1,0 +1,99 @@
+
+div.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+div.dropdown label {
+    cursor: pointer;
+}
+
+
+div.dropdown div.dropdown-menu-itens{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    /* border: 1px solid #ccc; */
+    background-color: #e96500;
+    color: #fff;
+    margin-top: 0 !important;
+    z-index: 1000;
+    text-align: left;
+    border-radius: 5px;
+}
+
+div.dropdown div.dropdown-menu-itens a{
+    border-bottom: 0px solid #ccc;
+    font-size: 12pt;
+    padding: 6px 8px;
+    text-align: center;
+}
+div.dropdown div.dropdown-menu-itens a:last-child{
+    border-bottom: 0px solid #ccc;
+    font-size: 12pt;
+}
+
+div.dropdown div.dropdown-menu-itens a:hover{
+    background-color: #e67b2ce0;
+    color: #fff;
+}
+
+div.item div.drop-title{
+    display: flex;
+    align-items: center;
+}
+
+#triangulo-para-cima {
+    width: 0; 
+    height: 0; 
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid #5386E4;
+  }
+  #triangulo-para-baixo {
+    width: 0; 
+    height: 0; 
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid #fff;
+    margin-right: 4px;
+    margin-left: 8px;
+  }
+
+
+div.dropdown > div.dropdown-menu-itens {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+  /* div.dropdown:hover > div.dropdown-menu-itens {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s linear;
+  } */
+
+  /* div.dropdown:hover > div.drop-title #triangulo-para-baixo {
+    border-top: 0px solid #949396;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid #dc210e;
+  } */
+
+  input#dropdown{
+      display: none;
+  }
+
+  input#dropdown:checked ~ div.item label div.drop-title #triangulo-para-baixo {
+    border-top: 0px solid #949396;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid #fff;
+  }
+  input#dropdown:checked ~ div.item div.dropdown-menu-itens {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
