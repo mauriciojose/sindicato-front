@@ -51,7 +51,7 @@ class FormNews extends React.Component{
 
     componentDidMount() {
         if (this.state.id) {
-            axios.get(`http://localhost:3333/news/${this.state.id}`)
+            axios.get(`${window._env_.api}/news/${this.state.id}`)
             .then(({ data: gallery }) => {
                 console.log(gallery);
                 const blocksFromHTML = convertFromHTML(gallery.description);
@@ -98,7 +98,7 @@ class FormNews extends React.Component{
 
         // console.log(this.state.titulo,this.photos.current.state.files);
 
-        axios.post("http://localhost:3333/news", formData, {
+        axios.post(`${window._env_.api}/news`, formData, {
         }).then(res => {
 
             this.container.current.alertSucces();
@@ -131,7 +131,7 @@ class FormNews extends React.Component{
         }
 
 
-        axios.put(`http://localhost:3333/news/${this.state.id}`, formData, {
+        axios.put(`${window._env_.api}/news/${this.state.id}`, formData, {
         }).then(res => {
 
             this.container.current.alertSucces();
@@ -147,7 +147,7 @@ class FormNews extends React.Component{
       }
 
       deleteFile(){
-        axios.delete(`http://localhost:3333/news/image/${this.state.id}/${this.state.file}/${this.state.fileExt}`, {}, {
+        axios.delete(`${window._env_.api}/news/image/${this.state.id}/${this.state.file}/${this.state.fileExt}`, {}, {
         }).then(res => {
 
             this.container.current.alertSucces();

@@ -99,7 +99,7 @@ class Upload extends React.Component{
           const formData = new FormData();
           formData.append("file", file, file.name);
     
-          req.open("POST", "http://localhost:8000/upload");
+          req.open("POST", `${window._env_.api}/upload`);
           req.send(formData);
         });
       }
@@ -159,7 +159,7 @@ class Upload extends React.Component{
                       <div onClick={this.setMessageState.bind(this)} title="Remover Imagem" className="btn-lixeira" style={{display: 'flex',alignItems:'center', justifyContent:'center', width: '50px',height: '50px', position: 'absolute',background:'red',right:'-8px',top:'-8px', borderRadius: '40px'}}>
                         <FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faTrash} />
                       </div>
-                      <img style={{width: '100%',height: '68%'}} src={`http://localhost:3333/news/${this.props.img}`} alt=""/>
+                      <img style={{width: '100%',height: '68%'}} src={`${window._env_.api}/news/${this.props.img}`} alt=""/>
                     </div>
                   </ModalBody>
                   <ModalFooter>

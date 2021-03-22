@@ -63,7 +63,7 @@ class FormGallery extends React.Component{
             formData.append('photos', files[key]);
         }
 
-        axios.post("http://localhost:3333/gallery", formData, {
+        axios.post(`${window._env_.api}/gallery`, formData, {
         }).then(res => {
 
             this.container.current.alertSucces();
@@ -80,8 +80,8 @@ class FormGallery extends React.Component{
             let form = <Form onSubmit={this.handleSubmit}>
                             <Row>
                                 <Col>
-                                    <Label for="email">Ã�lbum</Label>
-                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do Ã¡lbum" />
+                                    <Label for="email">Álbum</Label>
+                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do Álbum" />
                                 </Col>
                             </Row>
                             <Row>
@@ -89,12 +89,12 @@ class FormGallery extends React.Component{
                                     <Upload  ref={this.photos}  key={Math.random()} />
                                 </Col>
                                 <Col sm={4} className='align-end-right'>
-                                    <ButtonToggle type='submit' color="success">Salvar Ã�lbum</ButtonToggle>
+                                    <ButtonToggle type='submit' color="success">Salvar Álbum</ButtonToggle>
                                 </Col>
                             </Row>
                         </Form>;
         return  ( 
-            <Container ref={this.container}  title="Criar Ã�lbum" main={form}/>
+            <Container ref={this.container}  title="Criar Álbum" main={form}/>
         );
     }
 }
