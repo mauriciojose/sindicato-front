@@ -25,7 +25,7 @@ class Home extends React.Component{
         const headers = {
             'Content-Type': 'text/json'
         };
-        axios.get("/news?limit=6",{headers}).then(res => {
+        axios.get(`${window._env_.api}/news?limit=6`,{headers}).then(res => {
             this.setState({ news: res.data ? res.data : [], progressNews: false });
 
         }).catch((error) => {
