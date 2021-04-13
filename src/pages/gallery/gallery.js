@@ -3,7 +3,7 @@ import './gallery.css';
 
 import Container from '../components/container/container';
 
-import axios from 'axios';
+import api from '../../services/api';
 
 class Gallery extends React.Component{
 
@@ -34,7 +34,7 @@ class Gallery extends React.Component{
         const headers = {
             'Content-Type': 'text/json'
         };
-        axios.get("/gallery",{headers}).then(res => {
+        api.get("/gallery",{headers}).then(res => {
             this.setState({ gallerys: res.data });
 
         }).catch((error) => {

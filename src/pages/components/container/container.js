@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './container.css';
 
 import Alert from '../alerts/alert';
@@ -24,6 +24,9 @@ class Container extends React.Component{
                     <main>
                         { this.props.main }
                     </main>
+                    {
+                        this.props.footer ? <footer>{this.props.footer}</footer> : <Fragment></Fragment>
+                    }
                 </div>
             </div>
         );

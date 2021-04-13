@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
     Card,
@@ -20,10 +20,12 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { stateToHTML } from "draft-js-export-html";
 // import { stateFromHTML } from "draft-js-import-html";
 
-import axios from 'axios';
+import api from '../../services/api';
 
 import Container from '../components/container/container';
 import Upload from '../components/upload/upload';
+
+import Nav from '../components/navNew/navNew';
 
 import '../components/css/align.css'
 
@@ -51,7 +53,7 @@ class FormNews extends React.Component{
 
     componentDidMount() {
         if (this.state.id) {
-            axios.get(`${window._env_.api}/news/${this.state.id}`)
+            api.get(`/news/${this.state.id}`)
             .then(({ data: gallery }) => {
                 console.log(gallery);
                 const blocksFromHTML = convertFromHTML(gallery.description);
@@ -98,7 +100,7 @@ class FormNews extends React.Component{
 
         // console.log(this.state.titulo,this.photos.current.state.files);
 
-        axios.post(`${window._env_.api}/news`, formData, {
+        api.post(`/news`, formData, {
         }).then(res => {
 
             this.container.current.alertSucces();
@@ -106,7 +108,11 @@ class FormNews extends React.Component{
             this.photos.current.resetFiles();
 
         }).catch((error) => {
-            this.container.current.alertDanger();    
+            if (error.response.status == 401 || error.response.status == 403) {
+                window.location = "/auth";
+            } else{
+                this.container.current.alertDanger();  
+            }
         });
       }
 
@@ -131,7 +137,7 @@ class FormNews extends React.Component{
         }
 
 
-        axios.put(`${window._env_.api}/news/${this.state.id}`, formData, {
+        api.put(`/news/${this.state.id}`, formData, {
         }).then(res => {
 
             this.container.current.alertSucces();
@@ -142,19 +148,28 @@ class FormNews extends React.Component{
             }, 1500);
 
         }).catch((error) => {
-            this.container.current.alertDanger();    
+            // console.log(error, error.response);
+            if (error.response.status == 401 || error.response.status == 403) {
+                window.location = "/auth";
+            } else{
+                this.container.current.alertDanger();  
+            }
         });
       }
 
       deleteFile(){
-        axios.delete(`${window._env_.api}/news/image/${this.state.id}/${this.state.file}/${this.state.fileExt}`, {}, {
+        api.delete(`/news/image/${this.state.id}/${this.state.file}/${this.state.fileExt}`, {}, {
         }).then(res => {
 
             this.container.current.alertSucces();
             this.setState({file: undefined});
 
         }).catch((error) => {
-            this.container.current.alertDanger();    
+            if (error.response.status == 401 || error.response.status == 403) {
+                window.location = "/auth";
+            } else{
+                this.container.current.alertDanger();  
+            }
         });
       }
     
@@ -184,7 +199,10 @@ class FormNews extends React.Component{
                             </Row>
                         </Form>;
         return  ( 
-            <Container ref={this.container}  title="Criar Notícia" main={form}/>
+            <Fragment>
+                <Nav/>
+                <Container ref={this.container}  title="Criar Notícia" main={form}/>
+            </Fragment>
         );
     }
 }

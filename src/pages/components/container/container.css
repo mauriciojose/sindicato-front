@@ -28,3 +28,9 @@ div.container-syndicate div.inner-cointener main{
     height: 100%;
     padding-top: 1%;
 }
+
+@media screen and (max-width:46rem) {
+    div.container-syndicate{
+        margin-top: 13%;
+    }
+}

@@ -20,7 +20,7 @@ class Card extends React.Component{
     renderListArticles(item, i){
         return (
             <li>
-                <img src={`${window._env_.api}/news/`+item.path+ "/" +item.file} alt="" />
+                <img src={`${window._env_.storage}/news/`+item.path+ "/" +item.file} alt="" />
                 <h2>{item.name}</h2>
                 <p className={i%2 == 0 ? "descricao" : "descricao2"} dangerouslySetInnerHTML={{ __html: item.description }}/>
                 <hr/>

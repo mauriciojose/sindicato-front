@@ -14,7 +14,7 @@ import {
     ButtonToggle
 } from 'reactstrap';
 
-import axios from 'axios';
+import api from '../../services/api';
 
 import Container from '../components/container/container';
 import Upload from '../components/upload/upload';
@@ -36,15 +36,7 @@ class FormGallery extends React.Component{
     }
 
     componentDidMount() {
-        // const { match: { params } } = this.props;
-      
-        // axios.get(`/api/users/${params.userId}`)
-        //   .then(({ data: user }) => {
-        //     console.log('user', user);
-      
-        //     this.setState({ user });
-        //   });
-      }
+    }
       
 
       handleChange(event) {
@@ -63,7 +55,7 @@ class FormGallery extends React.Component{
             formData.append('photos', files[key]);
         }
 
-        axios.post(`${window._env_.api}/gallery`, formData, {
+        api.post(`/gallery`, formData, {
         }).then(res => {
 
             this.container.current.alertSucces();
@@ -71,7 +63,11 @@ class FormGallery extends React.Component{
             this.photos.current.resetFiles();
 
         }).catch((error) => {
-            this.container.current.alertDanger();    
+            if (error.response.status == 401 || error.response.status == 403) {
+                window.location = "/auth";
+            } else{
+                this.container.current.alertDanger();  
+            }
         });
       }
     
@@ -80,8 +76,8 @@ class FormGallery extends React.Component{
             let form = <Form onSubmit={this.handleSubmit}>
                             <Row>
                                 <Col>
-                                    <Label for="email">Álbum</Label>
-                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do Álbum" />
+                                    <Label for="email">Ýlbum</Label>
+                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do Ýlbum" />
                                 </Col>
                             </Row>
                             <Row>
@@ -89,12 +85,12 @@ class FormGallery extends React.Component{
                                     <Upload  ref={this.photos}  key={Math.random()} />
                                 </Col>
                                 <Col sm={4} className='align-end-right'>
-                                    <ButtonToggle type='submit' color="success">Salvar Álbum</ButtonToggle>
+                                    <ButtonToggle type='submit' color="success">Salvar Ýlbum</ButtonToggle>
                                 </Col>
                             </Row>
                         </Form>;
         return  ( 
-            <Container ref={this.container}  title="Criar Álbum" main={form}/>
+            <Container ref={this.container}  title="Criar Ýlbum" main={form}/>
         );
     }
 }

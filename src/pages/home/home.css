@@ -5,7 +5,7 @@
     nav {
         padding: 0 0 0 0 !important;
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: center;
     }
     .menu-logo,
@@ -17,7 +17,7 @@
     }
     .img-filie {
         width: 96% !important;
-        height: 1.3em !important;
+        height: 1.1em !important;
     }
     .filie,
     nav ul {

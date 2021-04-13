@@ -15,12 +15,16 @@ header.menu-nav nav ul{
 
 header.menu-nav nav ul li{
     padding: 1% .9%;
-    font-size: 1.2em;
+    font-size: 1.1em;
     cursor: pointer;
     color: #fff;
     font-weight: 600;
     letter-spacing: .1em;
     position: relative;
+}
+header.menu-nav nav ul li.right-item{
+    position: absolute;
+    right: 3%;
 }
 header.menu-nav nav ul li.dropdown label{
     display: flex;
@@ -48,7 +52,7 @@ header.menu-nav nav ul li:hover > a{
     color: #a20021;
 }
 
-header.menu-nav nav ul li input#dropdown ~ label div.dropdown-container {
+header.menu-nav nav ul li input.dropdown-check ~ label div.dropdown-container {
     position: absolute;
     background-color: #a20021;
     color: #fff;
@@ -63,11 +67,11 @@ header.menu-nav nav ul li input#dropdown ~ label div.dropdown-container {
     cursor: pointer;
     transition: transform 0.26s ease;
   }
-header.menu-nav nav ul li input#dropdown:checked ~ label div.dropdown-container{
+header.menu-nav nav ul li input.dropdown-check:checked ~ label div.dropdown-container{
     transform: scaleY(1);
 }
 
-header.menu-nav nav ul li input#dropdown{
+header.menu-nav nav ul li input.dropdown-check{
     display: none;
 }
 
@@ -86,7 +90,7 @@ header.menu-nav nav ul li:hover > label span.triangulo{
     color: #a20021;
 }
 
-header.menu-nav nav ul li input#dropdown:checked ~ label span.triangulo{
+header.menu-nav nav ul li input.dropdown-check:checked ~ label span.triangulo{
     border-top-color: #a20021;
     border-bottom-color: #a20021;
     transform: rotate(180deg);

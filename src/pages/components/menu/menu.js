@@ -12,11 +12,11 @@ class Menu extends React.Component{
                 <header className="menu">
                     <div className="menu-logo">
                     <div className="imoge">
-                            <a href=""> <FontAwesomeIcon style={{ color: "#25D366" }} className ='font-awesome' icon={faWhatsapp} /> </a>
-                            <a href=""> <FontAwesomeIcon style={{ color: "#3b5998" }} className ='font-awesome' icon={faFacebook} /> </a>
+                            <a href="https://wa.me/5575991561905" target="_blank"> <FontAwesomeIcon style={{ color: "#25D366" }} className ='font-awesome' icon={faWhatsapp} /> </a>
+                            <a href="https://www.facebook.com/sindsmut" target="_blank"> <FontAwesomeIcon style={{ color: "#3b5998" }} className ='font-awesome' icon={faFacebook} /> </a>
                             <a href=""> <FontAwesomeIcon style={{ color: "red" }} className ='font-awesome' icon={faYoutube} /> </a>
-                            <a href=""> <FontAwesomeIcon style={{ color: "#00acee" }} className ='font-awesome' icon={faTwitter} /> </a>
-                            <a href=""> {this.getInstagram()} </a>
+                            {/* <a href=""> <FontAwesomeIcon style={{ color: "#00acee" }} className ='font-awesome' icon={faTwitter} /> </a> */}
+                            <a href="instagram://user?username=sindsmut" target="_blank"> {this.getInstagram()} </a>
                             
                         </div>
                         <img className="img-menu" onClick={()=>{ window.location='/' }} src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""></img>

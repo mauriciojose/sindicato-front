@@ -4,12 +4,16 @@ import React from 'react';
 class DropDown extends React.Component{
     constructor(props) {
         super(props);
+        this.id = this.getId();
+    }
+    getId(){
+        return Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))
     }
     render(){
         return(
             <li className="dropdown"> 
-            <input type="checkbox" id="dropdown" />
-            <label for="dropdown">
+            <input type="checkbox" className="dropdown-check" id={`dropdown_${this.id}`} />
+            <label htmlFor={`dropdown_${this.id}`}>
 
                 <a className="title">{this.props.title}</a> 
                 <span className="triangulo triangulo-para-baixo"></span> 

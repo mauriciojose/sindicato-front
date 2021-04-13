@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 
-import axios from 'axios';
+import api from '../../services/api';
 
 import Container from '../components/container/container';
 import Nav from '../components/navNew/navNew';
 import './news.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import SweetAlert from 'react-bootstrap-sweetalert';
 
@@ -30,10 +30,11 @@ class News extends React.Component{
         const headers = {
             'Content-Type': 'text/json'
         };
-        axios.get("/news",{headers}).then(res => {
+        api.get(`/news`,{headers}).then(res => {
             this.setState({ news: res.data ? res.data : [], progressNews: false });
 
         }).catch((error) => {
+            this.setState({ news: [], progressNews: false });
             this.container.current.alertDanger();    
         });
     }
@@ -44,9 +45,21 @@ class News extends React.Component{
             <Fragment>
                 <Nav/>
                 {this.state.message ? this.onMessageDeleteFile() : <Fragment></Fragment>}
-                <Container ref={this.container}  title="Notícias" main={this.returnList()}/>
+                <Container ref={this.container}  title="Notícias" footer={this.returnFooter()} main={this.returnList()}/>
             </Fragment>
         );
+    }
+
+    returnFooter(){
+        return(
+            <div className="bg clearfix" style={{ padding: '.5rem' }}>
+                <button onClick={this.onClickNew} className="btn btn-info float-right"><FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faPlus} /> Nova Notícia</button>
+            </div>
+        );
+    }
+
+    onClickNew(){
+        window.location = "/news/create";
     }
 
     returnList(){
@@ -90,7 +103,7 @@ class News extends React.Component{
 
     deleteNews(){
         
-        axios.delete(`${window._env_.api}/news/${this.state.idRemove}`, {}, {
+        api.delete(`/news/${this.state.idRemove}`, {}, {
         }).then(res => {
             
             this.container.current.alertSucces();
@@ -100,7 +113,11 @@ class News extends React.Component{
             this.setState({ news: newsMap, message: false });
 
         }).catch((error) => {
-            this.container.current.alertDanger();    
+            if (error.response.status == 401 || error.response.status == 403) {
+                window.location = "/auth";
+            } else{
+                this.container.current.alertDanger();  
+            }   
         });
     }
 

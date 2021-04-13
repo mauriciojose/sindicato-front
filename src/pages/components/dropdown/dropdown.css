@@ -81,17 +81,17 @@ div.dropdown > div.dropdown-menu-itens {
     border-bottom: 10px solid #dc210e;
   } */
 
-  input#dropdown{
+  input.dropdown-check{
       display: none;
   }
 
-  input#dropdown:checked ~ div.item label div.drop-title #triangulo-para-baixo {
+  input.dropdown-check:checked ~ div.item label div.drop-title #triangulo-para-baixo {
     border-top: 0px solid #949396;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-bottom: 10px solid #fff;
   }
-  input#dropdown:checked ~ div.item div.dropdown-menu-itens {
+  input.dropdown-check:checked ~ div.item div.dropdown-menu-itens {
     display: flex;
     visibility: visible;
     opacity: 1;
