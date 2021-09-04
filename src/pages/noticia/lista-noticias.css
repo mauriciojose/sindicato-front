@@ -1,0 +1,69 @@
+.itens-noticias{
+    padding: 40px 0;
+}
+
+p{
+    margin-bottom: 0 !important;
+}
+
+.titulo-noticia {
+text-align: initial;
+font-size: 2em;
+margin: 30px 0 7px 0;
+opacity: 0.7;
+clear: left;
+}
+.list_noticias li a{
+
+text-decoration: none;
+color: #000029;
+
+}
+.header-noticias{
+font-size: 26pt;
+font-weight: bold;
+color: #ffffff;
+text-align: initial;
+margin-left: 10px;
+}
+.conteudo-noticia {
+    padding: 10px 0;
+    font-size: 20px;
+    margin: 0 20px 0 0;
+    text-align: initial;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 65px;
+}
+ul.botoes li {
+display: inline-block;
+}
+li#proximas {
+float: right;
+margin: 0 30px 0 0;
+}
+li#proximas a{
+text-decoration: none;
+color: #007bff;
+text-decoration: none;
+background-color: transparent;
+cursor: pointer;
+}
+li#anteriores a {
+text-decoration: none;
+}
+li#anteriores a {
+text-decoration: none;
+margin-left: 40px;
+color: #007bff;
+text-decoration: none;
+background-color: transparent;
+cursor: pointer;
+}
+li{
+    list-style: none;
+}

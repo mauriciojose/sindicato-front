@@ -18,7 +18,7 @@ class Nav extends React.Component{
                         <li className="menu-item"><a href="">Noticias</a></li>
                         <li className="menu-item"><a href="/servicos"> Serviços</a></li>
                         <li className="menu-item"><a href="/gallery"> Galeria</a></li>
-                        <li className="menu-item"><a href=""> Parceiros</a></li>
+                        {/* <li className="menu-item"><a href=""> Parceiros</a></li> */}
                         <li className="menu-item"><a href="/contato"> Contato</a></li>
     
                     </ul>

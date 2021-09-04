@@ -1,0 +1,83 @@
+.page {
+    position: relative;
+    display: flex;
+}
+.itens-noticias p{
+    /* font-weight: bold; */
+    font-size: 20px;
+    margin: 0 auto;
+}
+.conteudo-page{
+    /* margin-right: -100px; */
+}
+.feeds {
+        border: solid 1px transparent;
+        width: 80%;             
+        color: #e96908;
+        background: #e5e0e0;
+        margin: 0px 20px 0 0;
+    }
+    .feeds h4{
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        margin-top: 20px;
+        margin-left: 15px;
+    }
+.inputBusca {
+        margin: 11px 0 0 10px;
+    }
+
+    .inputBusca input {
+        padding: 10%;
+        width: 70%;
+        border: solid 1px #e96908;
+        border-radius: 5px;
+    }
+.btnBusca {
+    margin: 20px 0 0 10px;
+    }
+.btnBusca button {
+    background: #e96908;
+    color: white;
+    font-weight: bold;
+    font-family: ui-sans-serif;
+    padding: 8px;
+    width: 50%;
+    border: none;
+    font-size: 16px;
+    border-radius: 50px;
+}
+ul li{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+    list-style: none;
+}
+li a img{
+    width: 70%;
+    height: 150px;
+    margin: auto 15%;
+
+  }
+  .itens-noticias {
+        padding: 60px 0 0 0;
+        width: 98%;
+        margin: 0 0 0 2%;
+    }
+   
+.icone{
+    display: inline-block;
+
+}
+.conteudo1 {
+    
+    font-size: 18px;
+    margin: 10px 20px 0 18px;
+    text-align: justify;
+    } 
+
+    .conteudo-page {
+        /* margin-right: -100px; */
+        width: 100%;
+    }

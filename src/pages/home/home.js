@@ -40,17 +40,18 @@ class Home extends React.Component{
             <div>
                 <Menu/>
                 <Slide/>
-                <Articles titulo={"Ultimas Notícias"} component={ulNotices} />
-                <Articles titulo={"Nossa Localização"} component={this.getComponentLocalizacao()} />
+                <Articles titulo={"Ú\ltimas Notícias"} component={ulNotices} />
+                <Articles style={{display: "flex"}} titulo={"YouTube do Sindsmut"} component={this.getComponentVideo()} />
                 <Footer/>
             </div>
         );
     }
 
-    getComponentLocalizacao(){
+    getComponentVideo(){
         return(
-            <iframe src="https://maps.google.com/maps?q=Av.%20Pres.%20Kenedy,%20417,%20Tucano%20-%20BA,%2048790-000&t=&z=17&ie=UTF8&iwloc=&output=embed"
-            allowfullscreen="" loading="lazy"></iframe>
+            <div className="youtube-container">
+                <iframe width="75%" height="350vh" src="https://www.youtube.com/embed/ERrcNyQtNng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         );
     }
 }

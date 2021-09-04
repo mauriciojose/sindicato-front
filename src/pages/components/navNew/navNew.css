@@ -14,13 +14,14 @@ header.menu-nav nav ul{
 }
 
 header.menu-nav nav ul li{
-    padding: 1% .9%;
+    padding: .8% .9%;
     font-size: 1.1em;
     cursor: pointer;
     color: #fff;
     font-weight: 600;
     letter-spacing: .1em;
     position: relative;
+    border-top: 3px solid #f3752b;
 }
 header.menu-nav nav ul li.right-item{
     position: absolute;
@@ -112,7 +113,7 @@ header.menu-nav nav ul li span.triangulo-para-baixo {
 
 
 /* header.menu-nav { */
-    @media screen and (max-width:46rem) {
+    @media screen and (max-width:1050px) {
         header.menu-nav {
             position: fixed;
             z-index: 10000;
@@ -135,7 +136,7 @@ header.menu-nav nav ul li span.triangulo-para-baixo {
         label.hamburger-label{
             justify-content: flex-end !important;
             z-index: 10001;
-            display: flex;
+            display: flex !important;
         }
 
         div.menu-logo{

@@ -24,10 +24,10 @@ class navNew extends React.Component{
                             <li> <a href="/">INÍCIO</a> </li>
                             { isAuthenticated() ? <DropDown title="PAINEL" itensLinks={this.getItensPainel()} /> : <Fragment></Fragment> }
                             <DropDown title="O&nbsp;SINDICATO" itensLinks={this.getItensSindicato()} />
-                            <li> <a href="">NOTÍCIAS</a> </li>
+                            <li> <a href="/noticias">NOTÍCIAS</a> </li>
                             <li> <a href="/servicos">SERVIÇOS</a> </li>
                             <li> <a href="/gallery">GALERIA</a> </li>
-                            <li> <a href="">PARCEIROS</a> </li>
+                            {/* <li> <a href="">PARCEIROS</a> </li> */}
                             <li> <a href="/contato">CONTATOS</a> </li>
                             <li className='right-item'>
                                 {
@@ -60,6 +60,10 @@ class navNew extends React.Component{
             {
                 title: "Regime Interno",
                 href: "/regime/2"
+            },
+            {
+                title: "História",
+                href: "/historia"
             }
         ];
     }
@@ -72,7 +76,11 @@ class navNew extends React.Component{
             },
             {
                 title: "Galeria",
-                href: "/gallery"
+                href: "/galeria"
+            },
+            {
+                title: "Filiados",
+                href: "/filiados"
             }
         ];
     }

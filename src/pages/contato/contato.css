@@ -1,0 +1,97 @@
+div.container-contatos{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+div.container-contatos div.form-contact {
+    /* width: 56%; */
+    padding-left: 2%;
+}
+div.container-contatos div.informations-contact{
+    border-right: 1px solid #f3752b;
+}
+
+@media screen  and (max-width:1028px){
+    div.container-contatos div.informations-contact{
+        border-right: none;
+    }
+
+    div.container-contatos div.informations-contact {
+        padding: 0px !important;
+    }
+    div.container-contatos {
+        width: 100%;
+    }
+    
+}
+
+div.container-contatos div.form-contact .form-row-contact{
+    display: flex;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+div.container-contatos div.form-contact h2{
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    font-weight: 600;
+}
+div.container-contatos div.form-contact .form-row-contact input{
+    margin-right: 5px;
+    width: 100%;
+    padding: 5px 4px;
+}
+div.container-contatos div.form-contact .form-row-contact textarea{
+    margin-right: 5px;
+    width: 100%;
+    padding: 5px 4px;
+}
+div.container-contatos div.form-contact .form-row-contact button{
+    background-color: #f3752b;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 5px 15px;
+    /* transition: transform 0.1s; */
+}
+div.container-contatos div.form-contact .form-row-contact button:hover{
+    transform: scale(1.03);
+}
+
+div.container-contatos div.informations-contact{
+    padding: 10px 50px 10px 10px;
+}
+div.container-contatos div.informations-contact .list-card{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+div.container-contatos div.informations-contact .list-card .list-card-icon{
+    width: 55px;
+    height: 52px;
+    background-color: #f3752b;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div.container-contatos div.informations-contact .list-card .list-card-icon object{
+    width: 26px;
+    height: 26px;
+    filter: invert(100%);
+}
+div.container-contatos div.informations-contact .list-card .list-card-icon object.invert-object{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1) rotate(6deg);
+}
+
+div.container-contatos div.informations-contact .list-card .list-card-informations .title{
+    font-weight: 600;
+}
+div.container-contatos div.informations-contact .list-card .list-card-informations .subtitle{
+    color: #808080;
+}

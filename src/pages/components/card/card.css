@@ -15,7 +15,7 @@
     cursor: pointer;
     transition: all .2s ease-in;
     /* border: solid 1px #ccc; */
-    height: 82vh;
+    /* height: 82vh; */
     overflow: hidden;
 }
 

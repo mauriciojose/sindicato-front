@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
     Card,
@@ -20,6 +20,8 @@ import Container from '../components/container/container';
 import Upload from '../components/upload/upload';
 
 import '../components/css/align.css'
+
+import Nav from '../components/navNew/navNew';
 
 class FormGallery extends React.Component{
     constructor(props) {
@@ -76,8 +78,8 @@ class FormGallery extends React.Component{
             let form = <Form onSubmit={this.handleSubmit}>
                             <Row>
                                 <Col>
-                                    <Label for="email">Ýlbum</Label>
-                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do Ýlbum" />
+                                    <Label for="email">Álbum</Label>
+                                    <Input value={this.state.titulo} onChange={this.handleChange} type="text" name="titulo" id="titulo" placeholder="Digite o Nome do Álbum" />
                                 </Col>
                             </Row>
                             <Row>
@@ -85,12 +87,15 @@ class FormGallery extends React.Component{
                                     <Upload  ref={this.photos}  key={Math.random()} />
                                 </Col>
                                 <Col sm={4} className='align-end-right'>
-                                    <ButtonToggle type='submit' color="success">Salvar Ýlbum</ButtonToggle>
+                                    <ButtonToggle type='submit' color="success">Salvar Álbum</ButtonToggle>
                                 </Col>
                             </Row>
                         </Form>;
         return  ( 
-            <Container ref={this.container}  title="Criar Ýlbum" main={form}/>
+            <Fragment>
+                <Nav/>
+                <Container ref={this.container}  title="Criar Álbum" main={form}/>
+            </Fragment>
         );
     }
 }

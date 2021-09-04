@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './containerPages.css';
 
 import Menu from '../menu/menu';
@@ -11,14 +11,14 @@ class ContainerPages extends React.Component{
     }
 
     render(){
-
+        let subtitle = this.props.subtitle ? <Fragment><br/>{this.props.subtitle}</Fragment> : <Fragment></Fragment>;
         return(
             <div>
                 <Menu/>
                 <div className="containerPages">
                     <header>
-                        <img src={process.env.PUBLIC_URL + "/sp_banner.jpg"} alt=""/>
-                        <span>{this.props.titulo}</span>
+                        <img loading="lazy" src={this.props.img ? process.env.PUBLIC_URL +"/"+ this.props.img : process.env.PUBLIC_URL + "/sp_banner.jpg"} alt=""/>
+                        <span>{this.props.titulo}{subtitle}</span>
                     </header>
                     <main>
                         {this.props.innerMain}

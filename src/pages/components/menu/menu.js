@@ -1,7 +1,5 @@
 import React from 'react';
 import './menu.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp, faFacebook, faYoutube, faTwitter, faInstagram } from '@fortawesome/fontawesome-free-brands';
 
 import Nav from '../navNew/navNew';
 
@@ -12,17 +10,26 @@ class Menu extends React.Component{
                 <header className="menu">
                     <div className="menu-logo">
                     <div className="imoge">
-                            <a href="https://wa.me/5575991561905" target="_blank"> <FontAwesomeIcon style={{ color: "#25D366" }} className ='font-awesome' icon={faWhatsapp} /> </a>
-                            <a href="https://www.facebook.com/sindsmut" target="_blank"> <FontAwesomeIcon style={{ color: "#3b5998" }} className ='font-awesome' icon={faFacebook} /> </a>
-                            <a href=""> <FontAwesomeIcon style={{ color: "red" }} className ='font-awesome' icon={faYoutube} /> </a>
-                            {/* <a href=""> <FontAwesomeIcon style={{ color: "#00acee" }} className ='font-awesome' icon={faTwitter} /> </a> */}
-                            <a href="instagram://user?username=sindsmut" target="_blank"> {this.getInstagram()} </a>
+                            <a href="https://wa.me/5575991561905" target="_blank"> 
+                                <img src={process.env.PUBLIC_URL + "/icons/4.png"} alt="" />
+                            </a>
+                            <a href="https://www.facebook.com/sindsmut" target="_blank"> 
+                                <img src={process.env.PUBLIC_URL + "/icons/2.png"} alt="" />
+                            </a>
+                            <a href="https://www.youtube.com/c/sindsmut" target="_blank">
+                            <img src={process.env.PUBLIC_URL + "/icons/1.png"} alt="" />
+                            </a>
+                            <a href="https://www.instagram.com/sindsmut/" target="_blank">
+                                <img src={process.env.PUBLIC_URL + "/icons/3.png"} alt="" />
+                            </a>
                             
                         </div>
-                        <img className="img-menu" onClick={()=>{ window.location='/' }} src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""></img>
+                        <div className="img-menu">
+                            <img className="img-menu-img" onClick={()=>{ window.location='/' }} src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""></img>
+                        </div>
                         <div className="filie">
-                            <a className="filie-a" href=""><img className="img-filie" src={process.env.PUBLIC_URL + '/botao_filiacao.png'} alt="" /></a>
-                            <a className="filie-a" href=""><img className="img-filie" src={process.env.PUBLIC_URL + '/botao_pesquisar.png'} alt="" /></a>
+                            <a className="filie-a" href="">ÁREA DO FILIADO</a>
+                            <a className="filie-a" href="/filiese">FILIE-SE</a>
                         </div>
                     </div>
                 </header>

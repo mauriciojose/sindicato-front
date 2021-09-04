@@ -12,12 +12,20 @@
     .imoge,
     .img-menu {
         display: block !important;
-        width: 100% !important;
+        /* width: 100% !important; */
         text-align: center !important;
     }
+    .img-menu {
+        width: 40% !important;
+    }
     .img-filie {
-        width: 96% !important;
+        width: 76% !important;
         height: 1.1em !important;
+    }
+    .filie {
+        display: inline-flex !important;
+        width: 50% !important;
+        font-size: .5rem !important;
     }
     .filie,
     nav ul {
@@ -132,4 +140,21 @@
     header.menu{
         width: 100% !important;
     }
+
+    .imoge{
+        width: 40% !important;
+    }
+    .imoge a img{
+        width: 2.85vh !important;
+    }
+
+    .img-menu-img{
+        width: 154px !important;
+    }
+}
+
+.youtube-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
