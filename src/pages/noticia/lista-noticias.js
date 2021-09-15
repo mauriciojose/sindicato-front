@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import './lista-noticias.css';
+import '../css/bootstrap.css';
 import Menu from '../components/menu/menu';
 import Footer from '../components/footer/footer';
 
@@ -8,6 +9,8 @@ import api from '../../services/api';
 import Spin from '../components/spin/spin';
 
 import ContainerPages from '../components/containerPages/containerPages';
+
+import { formatDateWithNameMes } from "../../services/formatDate";
 
 
 class ListaNoticias extends React.Component{
@@ -44,46 +47,38 @@ class ListaNoticias extends React.Component{
         let img = this.state.progressNews ? '' : `${window._env_.storage}/news/${this.state.news.path}/${this.state.news.file}`;
 
         return(
-            this.state.progressNews ? <Spin type='container'/> : <ContainerPages innerMain={this.renderMain()} titulo="Notícias" />
+            this.state.progressNews ? <Spin type='container'/> : <ContainerPages innerMain={this.renderMain()} img="noticias.png" titulo="Notícias" />
         );
     }
 
     renderMain(){
         return(
             <Fragment>
-                <section className="itens-noticias">
-                    <ul className="list_noticias">
-                    { this.state.news.map( (value, key) => {
-                        let img = this.state.progressNews ? '' : `${window._env_.storage}/news/${value.path}/${value.file}`;
-                        var divStyle = {
-                            backgroundImage: this.state.progressNews ? '' : `url("${img}")`,
-                            backgroundRepeat: 'no-repeat',
-                            width: '100%', 
-                            margin: 'auto',
-                            height: '100%',
-                            backgroundPosition: "center",
-                            backgroundSize: "cover",
-                            backgroundAttachment: "fixed",
-                            color: "#000000",
-                            paddingTop: "180px",
-                            paddingBottom: "180px"
-                          };
-                        return(
-                            <li onClick={()=>{window.location=`/noticia/${value._id}`}}>
-                                <a>
-                                    <h1 className="titulo-noticia">
-                                        {value.name}
-                                    </h1>
-                                    <section className="header-site" style={divStyle}></section>
-                                    <p>Abril 22,2021 | Categoria: Noticia</p>
-                                    <p className="conteudo-noticia" dangerouslySetInnerHTML={{ __html: value.description }}/>
-                                    
-                                </a>
-                            </li> 
-                        );
-                    })}                     
+                
+                <section id="contant" class="contant">
+                    <div class="container">
+                        <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="news-post-holder">
 
-                    </ul>
+                            { this.state.news.map( (value, key) => {
+                                let img = this.state.progressNews ? '' : `${window._env_.storage}/news/${value.path}/${value.file}`;
+                                return <div class="col-lg-6 col-sm-6 col-xs-12">
+                                    <div class="news-post-widget" onClick={()=>{window.location=`/noticia/${value._id}`}}>
+                                    <img loading="lazy" class="img-responsive" src={img} alt=""/>
+                                    <div class="news-post-detail">
+                                        <span class="date">{formatDateWithNameMes(value.createdAt)}</span>
+                                        <h2><a>{value.name}</a></h2>
+                                        <p dangerouslySetInnerHTML={{ __html: value.description }}></p>
+                                    </div>
+                                    </div>
+                                </div>
+                            })}
+
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </section>
             
                 <div className="container">

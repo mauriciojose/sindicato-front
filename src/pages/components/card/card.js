@@ -9,24 +9,24 @@ class Card extends React.Component{
     render(){
 
         return(
-            <ul class="lista-noticias">
+            <div class="lista-noticias">
                 { this.props.itens.map( (value, key) => 
                     this.renderListArticles(value, key)
                 )}
-            </ul>
+            </div>
         );
     }
 
     renderListArticles(item, i){
         return (
-            <li onClick={()=>{window.location = "/news/"+item._id;}}>
-                <img src={`${window._env_.storage}/news/`+item.path+ "/" +item.file} alt="" />
+            <div className="li" onClick={()=>{window.location = "/noticia/"+item._id;}}>
+                <img loading="lazy" src={`${window._env_.storage}/news/`+item.path+ "/" +item.file} alt="" />
                 <h2>{item.name}</h2>
-                <p className={i%2 == 0 ? "descricao" : "descricao2"} dangerouslySetInnerHTML={{ __html: item.description }}/>
-                <hr/>
+                <p className={i%2 == 0 ? "descricao2" : "descricao2"} dangerouslySetInnerHTML={{ __html: item.description }}/>
+                {/* <hr/> */}
                 {/* <a href="">ler mais</a> */}
 
-            </li>
+            </div>
         );
     }
 }

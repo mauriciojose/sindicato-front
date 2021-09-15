@@ -70,6 +70,12 @@ class FilieseView extends React.Component{
             .then(({ data: filiese }) => {
                 console.log(filiese);
                 this.setState(filiese);
+            }).catch((error) => {
+                // this.setState({ news: [], progressNews: false });
+                // this.container.current.alertDanger();    
+                if (error.response.status === 403) {
+                    window.location = "/auth";
+                }
             });
         }
       }

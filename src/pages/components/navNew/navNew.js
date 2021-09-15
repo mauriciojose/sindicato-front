@@ -3,7 +3,7 @@ import './navNew.css';
 import '../hamburger/hamburger.css';
 
 import DropDown from '../dropdown/dropdown';
-import {isAuthenticated, logout} from '../../login/auth';
+import {getRole, isAuthenticated, logout} from '../../login/auth';
 // import Hamburger from '../hamburger/hamburger';
 
 class navNew extends React.Component{
@@ -22,13 +22,20 @@ class navNew extends React.Component{
                     <nav>
                         <ul>
                             <li> <a href="/">INÍCIO</a> </li>
-                            { isAuthenticated() ? <DropDown title="PAINEL" itensLinks={this.getItensPainel()} /> : <Fragment></Fragment> }
+                            { isAuthenticated() ? 
+                            
+                                getRole() == 'ADMIN' ? 
+                                    <DropDown title="PAINEL" itensLinks={this.getItensPainel()} /> 
+                                    : <li> <a href="/prestacoes">PRESTAÇÕES</a> </li>
+                                : <Fragment></Fragment> 
+                            
+                            }
                             <DropDown title="O&nbsp;SINDICATO" itensLinks={this.getItensSindicato()} />
                             <li> <a href="/noticias">NOTÍCIAS</a> </li>
                             <li> <a href="/servicos">SERVIÇOS</a> </li>
                             <li> <a href="/gallery">GALERIA</a> </li>
                             {/* <li> <a href="">PARCEIROS</a> </li> */}
-                            <li> <a href="/contato">CONTATOS</a> </li>
+                            <li> <a href="/contato">CONTATO</a> </li>
                             <li className='right-item'>
                                 {
                                    isAuthenticated() ? <a onClick={this.sair.bind(this)}> {'Sair'} </a> : <a href="/auth">Entrar</a>
@@ -81,6 +88,14 @@ class navNew extends React.Component{
             {
                 title: "Filiados",
                 href: "/filiados"
+            },
+            {
+                title: "Novos Filiados",
+                href: "/filiados/novos"
+            },
+            {
+                title: "Prestações",
+                href: "/prestacao"
             }
         ];
     }

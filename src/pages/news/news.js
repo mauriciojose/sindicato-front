@@ -36,6 +36,9 @@ class News extends React.Component{
         }).catch((error) => {
             this.setState({ news: [], progressNews: false });
             this.container.current.alertDanger();    
+            if (error.response.status === 403) {
+                window.location = "/auth";
+            }
         });
     }
 
@@ -80,7 +83,7 @@ class News extends React.Component{
         return(
             <div className="itensSystem">
                 <div className="itemSystem" style={{width: '30%'}}>
-                    {data.toLocaleDateString()}
+                    {data.toLocaleDateString('pt-br')}
                 </div>
                 <div className="itemSystem">
                     {item.name}

@@ -118,7 +118,7 @@ header.menu-nav nav ul li span.triangulo-para-baixo {
             position: fixed;
             z-index: 10000;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             top: 0;
             background-color: rgba(0,0,0,0.75);
             flex-direction: column;
@@ -137,6 +137,7 @@ header.menu-nav nav ul li span.triangulo-para-baixo {
             justify-content: flex-end !important;
             z-index: 10001;
             display: flex !important;
+            position: fixed;
         }
 
         div.menu-logo{

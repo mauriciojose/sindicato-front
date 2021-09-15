@@ -7,6 +7,7 @@ import api from '../../services/api';
 
 import Spin from '../components/spin/spin';
 
+import { formatDateWithNameMes } from "../../services/formatDate";
 
 class Noticia extends React.Component{
     constructor(props) {
@@ -42,7 +43,6 @@ class Noticia extends React.Component{
             height: '100%',
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundAttachment: "fixed",
             color: "#000000",
             paddingTop: "180px",
             paddingBottom: "180px"
@@ -56,19 +56,19 @@ class Noticia extends React.Component{
                         <h1 className="titulo-principal">
                             {this.state.news.name}
                         </h1>
-                        <p>Abril 22,2021 | Categoria: Noticia</p>
+                        <p className="date">{formatDateWithNameMes(this.state.news.createdAt)}</p>
                         <br />
                         <section className="header-site" style={divStyle}></section>
-                        <div style={{marginTop:"20px", marginBottom:"10px"}} dangerouslySetInnerHTML={{ __html: this.state.news.description }}></div>
+                        <div style={{marginTop:"5%", marginBottom:"2%"}} dangerouslySetInnerHTML={{ __html: this.state.news.description }}></div>
 
                         <p className="conteudo1 fonte">Fonte – Sindsmut</p>
                     </section>
-                    <div className="tag conteudo1">
+                    {/* <div className="tag conteudo1">
                         <p>tag:
                             <a href="">professores</a>,<a href="">sindicato</a>
                         </p>
                         <br/>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <Footer/>

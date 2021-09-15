@@ -80,7 +80,7 @@ class Galeria extends React.Component{
         return(
             <div className="itensSystem">
                 <div className="itemSystem" style={{width: '30%'}}>
-                    {data.toLocaleDateString()}
+                    {data.toLocaleDateString('pt-br')}
                 </div>
                 <div className="itemSystem">
                     {item.name}

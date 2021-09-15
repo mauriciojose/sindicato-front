@@ -3,13 +3,114 @@
     color: #ffffff !important;
     font-weight: bold !important;
     text-align: center !important;
-    /* padding: 20px 0 !important; */
+    display: flex;
+    padding: 20px 0 !important;
 }
 
 .footer img {
-    width: 10% !important;
+    /* width: 20% !important; */
+    width: 90px !important;
+    /* height: 90px !important; */
+}
+.footer .element-bigger {
+    width: 30% !important;
+}
+.footer .element-smaller {
+    width: 40% !important;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.footer .element-smaller a {
+    outline: none;
+    color: white;
+}
+.footer .element-smaller a b {
+    padding: 4px 0;
+    font-size: 12px;
+    cursor: pointer;
 }
 
 section.footer p{
     margin-bottom: 0 !important;
+}
+.footer .info-sindicato{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer .info-sindicato .endereco{
+    text-align: left;
+    font-size: 10pt !important;
+}
+.footer .info-sindicato .endereco p{
+    text-align: left;
+    font-size: 9pt !important;
+}
+
+.footer-contacts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-images{
+    /* margin: 3px 0; */
+    padding: 15px 0;
+    border-bottom: 1px solid white;
+    width: 150px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-images i{
+    margin-right: 3px;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 90px;
+}
+
+.footer-filiese{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+.footer-filiese a {
+    outline: none;
+    color: white;
+}
+.footer-filiese a:hover {
+    color: white;
+}
+.footer-filiese a b{
+    font-size: 12px;
+}
+.footer-filiese a b:nth-child(2){
+    margin-top: 5px;
+}
+
+@media screen and (max-width:627px) {
+    .footer-images i{
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (max-width:617px) {
+    .footer .info-sindicato{
+        flex-direction: column;
+    }
+    .footer .info-sindicato .endereco p{
+        margin-top: 5px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:412px) {
+    /* .imoge a{
+        margin-right: 2px !important;
+    } */
+    .footer-images i{
+        font-size: 21px !important;
+    }
 }

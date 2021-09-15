@@ -37,14 +37,15 @@ class Alert extends React.Component{
             count: 0,
             alerts: [],
             interval: null,
-            removed: false
+            removed: false,
+            msg: null
         };
     }
 
     componentDidMount () {
     } 
 
-    addAlert(tipo){
+    addAlert(tipo, msg=null){
         let id = this.getId();
         this.state.alerts.push({
             id: id,
@@ -53,7 +54,7 @@ class Alert extends React.Component{
         if (this.state.alerts.length == 1) {
             this.interval = setInterval(this.removeAlertPop.bind(this), 5000);
         }
-        this.setState({ alerts: this.state.alerts});
+        this.setState({ alerts: this.state.alerts, msg: msg});
     }
     removeAlertPop(){
         if (!this.state.removed) {
@@ -96,10 +97,6 @@ class Alert extends React.Component{
     render(){
         return (
             <div className='content-alert'>
-                {/* <button onClick={this.addAlert.bind(this,'warning')}>Warning</button>
-                <button onClick={this.addAlert.bind(this,'success')}>Sucess</button>
-                <button onClick={this.addAlert.bind(this,'danger')}>Danger</button>
-                <button onClick={this.addAlert.bind(this,'info')}>Info</button> */}
                 { this.state.alerts.map( (value, key) => 
                     value.component
                 )}
@@ -114,7 +111,7 @@ class Alert extends React.Component{
                         <button type="button" className="Close" data-dismiss="alert" onClick={ () => this.removeAlert(id) } aria-hidden="true">x</button>
                         <div className="icon">
                             {this.propiedades[tipo].simbolo}
-                        </div><strong>{this.propiedades[tipo].titulo}!</strong> <span>{this.propiedades[tipo].msg}!</span>
+                        </div><strong>{this.propiedades[tipo].titulo}!</strong> <span>{this.state.msg ? this.state.msg : this.propiedades[tipo].msg}!</span>
                     </div>
             </div>
         );

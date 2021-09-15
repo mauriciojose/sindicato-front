@@ -2,6 +2,7 @@ import React from 'react';
 import './menu.css';
 
 import Nav from '../navNew/navNew';
+import "../../css/fontawesome/fontawesome-free-5.15.4-web/css/all.min.css";
 
 class Menu extends React.Component{
     render(){
@@ -10,17 +11,22 @@ class Menu extends React.Component{
                 <header className="menu">
                     <div className="menu-logo">
                     <div className="imoge">
-                            <a href="https://wa.me/5575991561905" target="_blank"> 
-                                <img src={process.env.PUBLIC_URL + "/icons/4.png"} alt="" />
-                            </a>
                             <a href="https://www.facebook.com/sindsmut" target="_blank"> 
-                                <img src={process.env.PUBLIC_URL + "/icons/2.png"} alt="" />
+                                {/* <img src={process.env.PUBLIC_URL + "/icons/2.png"} alt="" /> */}
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                            <a href="https://wa.me/5575991561905" target="_blank"> 
+                                {/* <img src={process.env.PUBLIC_URL + "/icons/4.png"} alt="" /> */}
+                                <i class="fab fa-whatsapp-square"></i>
+                                
                             </a>
                             <a href="https://www.youtube.com/c/sindsmut" target="_blank">
-                            <img src={process.env.PUBLIC_URL + "/icons/1.png"} alt="" />
+                            {/* <img src={process.env.PUBLIC_URL + "/icons/1.png"} alt="" /> */}
+                                <i class="fab fa-youtube-square diminuir"></i>
                             </a>
                             <a href="https://www.instagram.com/sindsmut/" target="_blank">
-                                <img src={process.env.PUBLIC_URL + "/icons/3.png"} alt="" />
+                                {/* <img src={process.env.PUBLIC_URL + "/icons/3.png"} alt="" /> */}
+                                <i class="fab fa-instagram-square"></i>
                             </a>
                             
                         </div>
@@ -28,7 +34,7 @@ class Menu extends React.Component{
                             <img className="img-menu-img" onClick={()=>{ window.location='/' }} src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""></img>
                         </div>
                         <div className="filie">
-                            <a className="filie-a" href="">ÁREA DO FILIADO</a>
+                            <a className="filie-a" href="/login">ÁREA DO FILIADO</a>
                             <a className="filie-a" href="/filiese">FILIE-SE</a>
                         </div>
                     </div>

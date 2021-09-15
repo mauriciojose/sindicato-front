@@ -8,18 +8,51 @@ header.menu {
     /* padding-left: 2%; */
 }
 
+.imoge a {
+    outline: none;
+    color: white;
+    margin-right: 4px;
+}
+.imoge a i{
+    color: #f3752b;
+    font-size: 44px;
+    /* -webkit-text-stroke-width: 1px; */
+    /* stroke-width: 1px; */
+}
+/* .diminuir{
+    -webkit-text-stroke: 2px white;
+    background-color: #f3752b;
+    font-size: 42px;
+} */
+
 .imoge a svg {
     font-size: 3.4vw !important;
 }
 
-@media screen and (max-width:808px) {
-    .imoge a svg {
-        font-size: 3.9vw !important;
+@media screen and (max-width:1008px) {
+    .imoge a i{
+        font-size: 35px !important;
     }
 }
-@media screen and (max-width:521px) {
-    .imoge a svg {
-        font-size: 4.4vw !important;
+
+@media screen and (max-width:947px) {
+    .imoge a i{
+        font-size: 30px !important;
+    }
+}
+
+@media screen and (max-width:627px) {
+    .imoge a i{
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (max-width:412px) {
+    .imoge a{
+        margin-right: 2px !important;
+    }
+    .imoge a i{
+        font-size: 21px !important;
     }
 }
 

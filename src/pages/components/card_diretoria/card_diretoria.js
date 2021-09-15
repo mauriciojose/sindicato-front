@@ -92,7 +92,7 @@ class CardPessoa extends React.Component{
                                 <img loading="lazy" className="card-image" src={process.env.PUBLIC_URL + "/diretoria/DSC_4745.jpg"} alt="alternative"></img>
                                 <div className="card-body">
                                     <p className="testimonial-text">Zanoni Lopes do Carmo Carvalho</p>
-                                    <p className="testimonial-author">Diretor de assuntos previdenciários jurídicos, formação sindical e relações do trabalho</p>
+                                    <p className="testimonial-author">Diretor de Assuntos Previdenciários Jurídicos, Formação Sindical e Relações do Trabalho</p>
                                 </div>
                             </div>
                         </div> 

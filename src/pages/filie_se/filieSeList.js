@@ -35,7 +35,10 @@ class FilieseList extends React.Component{
 
         }).catch((error) => {
             this.setState({ news: [], progressNews: false });
-            this.container.current.alertDanger();    
+            this.container.current.alertDanger();  
+            if (error.response.status === 403) {
+                window.location = "/auth";
+            }  
         });
     }
 
@@ -63,7 +66,7 @@ class FilieseList extends React.Component{
     }
 
     onClickView(id){
-        window.location = `/filiados/${id}`;
+        window.location = `/filiados/novos/${id}`;
     }
 
     returnList(){
@@ -84,7 +87,7 @@ class FilieseList extends React.Component{
         return(
             <div className="itensSystem">
                 <div className="itemSystem" style={{width: '30%'}}>
-                    {data.toLocaleDateString()}
+                    {data.toLocaleDateString('pt-br')}
                 </div>
                 <div className="itemSystem">
                     {item.nome}

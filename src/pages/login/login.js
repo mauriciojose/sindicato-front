@@ -97,7 +97,7 @@ class Login extends React.Component{
                 password: this.state.password
             }).then(result => {
                 this.setState({loading: false});
-                login(result.data.token);
+                login(result.data.token, result.data.type);
                 window.location = "/";
                 
             }).catch(error => {
@@ -141,14 +141,14 @@ class Login extends React.Component{
                             { this.state.loading ? <div className="spin-login"></div>: "Entrar" }
                         </button>
                         <div className="esqueceu-senha">
-                            <span>Esqueceu sua senha?</span>
+                            {/* <span>Esqueceu sua senha?</span> */}
                         </div>
-                        <div className="divider">
+                        {/* <div className="divider">
                             <div className="line"></div>
                             <span>OU</span>
                             <div className="line"></div>
-                        </div>
-                        <button className="btn-cadastrar" onClick={ ()=>{window.location="/register"} }>Cadastre-se</button>
+                        </div> */}
+                        {/* <button className="btn-cadastrar" onClick={ ()=>{window.location="/register"} }>Cadastre-se</button> */}
                     </div>
                 </div>
             </form>

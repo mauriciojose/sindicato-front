@@ -24,6 +24,8 @@ class FilieSe extends React.Component{
     constructor(props) {
         super(props);
 
+        this.container = React.createRef();
+
         this.state = {
             nome: '',
             cargo: '',
@@ -147,7 +149,13 @@ class FilieSe extends React.Component{
             if (error.response.status == 401 || error.response.status == 403) {
                 window.location = "/auth";
             } else{
-                // this.container.current.alertDanger();  
+                error = error.response.data;
+                console.log(error);
+                this.container.current.alertDanger(error.error);  
+                this.setState({
+                    loading: false
+                    // is_send: true
+                });
             }
         });
 
@@ -189,7 +197,7 @@ class FilieSe extends React.Component{
     render(){
 
         return(
-            <ContainerPages innerMain={this.renderMain()} titulo="20 ANOS DE HISTÓRIA" subtitle="+ DE 1000 ASSOCIADOS" img="filiese/filiese.png" />
+            <ContainerPages ref={this.container} innerMain={this.renderMain()} titulo="20 ANOS DE HISTÓRIA" subtitle="+ DE 1000 ASSOCIADOS" img="filiese/filiese.png" />
         );
     }
 
