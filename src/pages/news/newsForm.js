@@ -144,7 +144,7 @@ class FormNews extends React.Component{
             this.setState({titulo: ''});
             this.photos.current.resetFiles();
             setTimeout(() => {
-                window.location = '/news';
+                window.location = '/news/list';
             }, 1500);
 
         }).catch((error) => {

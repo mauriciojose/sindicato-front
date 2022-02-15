@@ -171,7 +171,7 @@ class FilieSe extends React.Component{
                 cargo: "professor",
                 local: "caldas do jorro",
                 secretaria: "teste ",
-                matricula: "1010",
+                // matricula: "1010",
                 data_admissao: "01/01/2019",
                 rg: "14934355",
                 orgao_emissor: "ssp",
@@ -276,7 +276,7 @@ class FilieSe extends React.Component{
                                 </Col>
                             </Row>
                             <Row>
-                                <Col sm={4}>
+                                <Col sm={8}>
                                     <Label for="secretaria">Secretaria</Label>
                                     <Input 
                                         required 
@@ -291,7 +291,7 @@ class FilieSe extends React.Component{
                                         onInvalid={this.handleValidity}
                                     />
                                 </Col>
-                                <Col sm={4}>
+                                {/* <Col sm={4}>
                                     <Label for="matricula">Matrícula</Label>
                                     <Input 
                                         required 
@@ -305,7 +305,7 @@ class FilieSe extends React.Component{
                                         data-message={'Digite uma Matrícula Válida'}
                                         onInvalid={this.handleValidity}
                                     />
-                                </Col>
+                                </Col> */}
                                 <Col sm={4}>
                                     <Label for="data_admissao">Data de Admissão</Label>
                                     <Input 
@@ -567,11 +567,11 @@ class FilieSe extends React.Component{
                                     <ButtonToggle type='submit' onClick={this.handleSubmit} color="success"> { this.state.loading ? <div className="spin-login"></div>: "Filie-se" }</ButtonToggle>
                                 </Col>
                             </Row>
-                            <Row>
+                            {/* <Row>
                                 <Col sm={12} className='align-end-righti'>
                                     <ButtonToggle type='button' onClick={this.setObject} color="info">{'PREENCHER'}</ButtonToggle>
                                 </Col>
-                            </Row>
+                            </Row> */}
                         </Form>;
         return  ( 
             <Fragment>

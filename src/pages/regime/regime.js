@@ -15,14 +15,14 @@ class Regime extends React.Component{
     render(){
 
         return(
-            <ContainerPages innerMain={this.renderMain()} titulo={this.props.match.params.tipo == 2 ? "Regime Interno" : "Estatuto"} />
+            <ContainerPages innerMain={this.renderMain()} titulo={this.props.match.params.tipo == 2 ? "Regime Interno" : "Estatuto"}  img="diretoria-banner.png" />
         );
     }
 
     renderMain(){
         return(
             <div className="informations-pages">
-                <p> Clique aqui e faça o download do {this.props.match.params.tipo == 2 ? "Regime Interno" : "Estatuto"} do Sindicato dos Petroleiros da Bahia (Sindipetro). </p>
+                <p> Clique aqui e faça o download do {this.props.match.params.tipo == 2 ? "Regime Interno" : "Estatuto"}. </p>
                 <br/>
                 {/* <br/> */}
                 <a className="regime" download href={process.env.PUBLIC_URL + '/ESTATUTO.pdf'} style={{display:'flex', alignItems:'center', cursor:'pointer'}}> 

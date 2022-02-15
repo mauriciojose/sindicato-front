@@ -16,10 +16,10 @@ class Nav extends React.Component{
                     <ul>
                         <li className="menu-item"> <DropDown title="O Sindicato" itensLinks={this.getItensSindicato()} /> </li>
                         <li className="menu-item"><a href="">Noticias</a></li>
-                        <li className="menu-item"><a href="/servicos"> Serviços</a></li>
-                        <li className="menu-item"><a href="/gallery"> Galeria</a></li>
+                        {/* <li className="menu-item"><a href="/servicos"> Serviços</a></li> */}
+                        <li className="menu-item"><a href="/gallery/"> Galeria</a></li>
                         {/* <li className="menu-item"><a href=""> Parceiros</a></li> */}
-                        <li className="menu-item"><a href="/contato"> Contato</a></li>
+                        <li className="menu-item"><a href="/contato/"> Contato</a></li>
     
                     </ul>
                 </div>
@@ -38,10 +38,10 @@ class Nav extends React.Component{
                 title: "Estatuto",
                 href: "/diretoria"
             },
-            {
-                title: "Regime Interno",
-                href: "/diretoria"
-            }
+            // {
+            //     title: "Regime Interno",
+            //     href: "/diretoria"
+            // }
         ];
     }
 }

@@ -65,7 +65,7 @@ class Gallery extends React.Component{
                 }
                 rows.push(<Fragment>
                     <div>
-                        <h5 style={{textTransform:"uppercase",margin: "30px 0px 10px 0",color:"#474a51"}}>{album.name}</h5>
+                        <h5 style={{textTransform:"uppercase",margin: "30px 0px 10px 0",color:"#474a51",fontSize: "1.3rem", fontWeight:"600"}}>{album.name}</h5>
                         <div className="gallery" id="gallery">
     
                             {this.renderGallery(key,album.path,album.files)}

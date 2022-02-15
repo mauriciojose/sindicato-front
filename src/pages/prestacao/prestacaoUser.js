@@ -67,12 +67,17 @@ class Prestacao extends React.Component{
     }
 
     returnList(){
-        return (<div className="listSystem">
-            {this.returnListHeader()}
-            { this.state.news.map( (value, key) => 
-                this.returnListMain(value)
-            )}
-        </div>);
+        return (
+        <>
+            <h2>Prestação de Contas</h2>
+            <hr />
+            <div className="listSystem">
+                {this.returnListHeader()}
+                { this.state.news.map( (value, key) => 
+                    this.returnListMain(value)
+                )}
+            </div>
+        </>);
     }
 
     onClickVisualizarItem(item){

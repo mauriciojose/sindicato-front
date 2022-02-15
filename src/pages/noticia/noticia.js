@@ -9,6 +9,8 @@ import Spin from '../components/spin/spin';
 
 import { formatDateWithNameMes } from "../../services/formatDate";
 
+import MetaTags from 'react-meta-tags';
+
 class Noticia extends React.Component{
     constructor(props) {
         super(props);
@@ -17,19 +19,23 @@ class Noticia extends React.Component{
             progressNews: true,
             id: this.props.match.params.id || null
         }
+
+        this.authUser();
     }
 
-    componentDidMount() {
+    async authUser() {
         const headers = {
             'Content-Type': 'text/json'
         };
-        api.get(`/news/${this.state.id}`,{headers}).then(res => {
-            this.setState({ news: res.data ? res.data : null, progressNews: false });
+        let news = await api.get(`/news/${this.state.id}`,{headers});
+        console.log(news);
+        this.setState({ news: news.data ? news.data : [], progressNews: false });
+     }
 
-        }).catch((error) => {
-            this.setState({ news: [], progressNews: false });
-            this.container.current.alertDanger();    
-        });
+    componentDidMount() {
+        
+        
+        
     }
 
     render(){
@@ -48,7 +54,24 @@ class Noticia extends React.Component{
             paddingBottom: "180px"
           };
         return(
-            this.state.progressNews ? <Spin type='container'/> : <Fragment>
+            this.state.progressNews ? null : <Fragment>
+
+            <MetaTags>
+                <title>{this.state.news.name}</title>
+
+                <meta property="og:title" content={this.state.news.name}/>
+                <meta property="og:description" content={this.state.news.name} />
+                <meta
+                name="description"
+                content={this.state.news.name}
+                />
+                <meta property="og:site_name" content="Sindsmut"/>
+                <meta property="og:url" content={window.location.href+"/"}/>
+                <meta property="og:image" content={`${window._env_.storage}/news/${this.state.news.path}/${this.state.news.file}`}></meta>
+                <meta property="og:type" content="website" />
+
+            </MetaTags>
+
                 <Menu/>
             <div className="page">
                 <div className="conteudo-page">

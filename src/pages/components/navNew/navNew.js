@@ -32,10 +32,10 @@ class navNew extends React.Component{
                             }
                             <DropDown title="O&nbsp;SINDICATO" itensLinks={this.getItensSindicato()} />
                             <li> <a href="/noticias">NOTÍCIAS</a> </li>
-                            <li> <a href="/servicos">SERVIÇOS</a> </li>
-                            <li> <a href="/gallery">GALERIA</a> </li>
+                            {/* <li> <a href="/servicos">SERVIÇOS</a> </li> */}
+                            <li> <a href="/gallery/list">GALERIA</a> </li>
                             {/* <li> <a href="">PARCEIROS</a> </li> */}
-                            <li> <a href="/contato">CONTATO</a> </li>
+                            <li> <a href="/contacts">CONTATO</a> </li>
                             <li className='right-item'>
                                 {
                                    isAuthenticated() ? <a onClick={this.sair.bind(this)}> {'Sair'} </a> : <a href="/auth">Entrar</a>
@@ -64,10 +64,10 @@ class navNew extends React.Component{
                 title: "Estatuto",
                 href: "/regime/1"
             },
-            {
-                title: "Regime Interno",
-                href: "/regime/2"
-            },
+            // {
+            //     title: "Regime Interno",
+            //     href: "/regime/2"
+            // },
             {
                 title: "História",
                 href: "/historia"
@@ -79,19 +79,19 @@ class navNew extends React.Component{
         return [
             {
                 title: "Notícias",
-                href: "/news"
+                href: "news/list"
             },
             {
                 title: "Galeria",
-                href: "/galeria"
+                href: "/galeria/"
             },
             {
-                title: "Filiados",
+                title: "Novos Cadastros",
                 href: "/filiados"
             },
             {
                 title: "Novos Filiados",
-                href: "/filiados/novos"
+                href: "/cadastros/novos"
             },
             {
                 title: "Prestações",

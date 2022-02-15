@@ -21,6 +21,7 @@
     "react-helmet": "^6.1.0",
     "react-image-gallery": "^1.2.7",
     "react-images": "^1.2.0-beta.7",
+    "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slideshow-image": "^3.4.3",

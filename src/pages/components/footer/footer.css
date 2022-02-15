@@ -90,6 +90,20 @@ section.footer p{
     margin-top: 5px;
 }
 
+.footer-img{
+    width: 55px;
+    margin-right: 10px;
+}
+
+.clickable {
+    width: 55px;
+    margin-right: 10px;
+}
+.clickable object{
+    width: 100%;
+    pointer-events: none;
+}
+
 @media screen and (max-width:627px) {
     .footer-images i{
         font-size: 25px !important;

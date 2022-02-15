@@ -28,9 +28,39 @@ class FilieSe extends React.Component{
             nome: '',
             matricula: '',
             cpf: '',
+            email: '',
             is_send: false,
-            loading: false
+            loading: false,
+            messageErros: {
+                cpf: [],
+                matricula: [],
+                nome: [],
+                email: []
+            },
+            errorMessage: ''
         };
+
+        this.rules = new Map();
+        this.rules.set('email', {
+            name: "E-mail",
+            empty: ()=>{return this.validateTesteEmpty('email')},
+            pattern: ()=>{return this.validateTestePattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,"email")}
+        });
+        this.rules.set('matricula', {
+            name: "Matrícula",
+            empty: ()=>{return this.validateTesteEmpty('matricula')},
+            pattern: false
+        });
+        this.rules.set('nome', {
+            name: "Nome",
+            empty: ()=>{return this.validateTesteEmpty('nome')},
+            pattern: false
+        });
+        this.rules.set('cpf', {
+            name: "CPF",
+            empty: ()=>{return this.validateTesteEmpty('cpf')},
+            pattern: false
+        });
         
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this); 
@@ -38,8 +68,54 @@ class FilieSe extends React.Component{
 
         this.form = React.createRef();
 
+        this.validate = this.validate.bind(this);
+
     }
 
+    validate() {
+        let estado = this.state;
+        estado.messageErros = {
+            cpf: [],
+            matricula: [],
+            nome: [],
+            email: []
+        };
+        this.setState(estado);
+        let retorno = true;
+        for (var [keyMap, value] of this.rules) {
+            for (const key in value) {
+                if (Object.hasOwnProperty.call(value, key)) {
+                    if (typeof value[key] === 'function') {
+                        let teste = value[key]();
+                        if (teste) {
+                            retorno = false;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return retorno;
+    }
+
+    validateTesteEmpty(campo){
+        let result = !this.state[campo].trim().length > 0;
+        if (result) {
+            let messages = this.state.messageErros;
+            messages[campo].push("* Preencha o campo");
+            this.setState({messageErros: messages});
+        }
+        return result;
+    }
+    validateTestePattern(pattern,campo){
+        let result = !pattern.test(this.state[campo]);
+        if (result) {
+            let messages = this.state.messageErros;
+            messages[campo].push("* Formato inválido");
+            this.setState({messageErros: messages});
+        }
+        return result;
+    }
     
 
     removeItens(value, mascara){
@@ -111,30 +187,35 @@ class FilieSe extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({loading: true});
-        
-        let filiado = this.state;
-        filiado.is_send = undefined;
-        filiado.loading = undefined;
 
-        api.post(`/filiado`, filiado, {
-        }).then(res => {
-
-            this.setState({
-                loading: false,
-                is_send: true
+        if (this.validate()) {
+            // this.setState({loading: true, errorMessage: ''});
+            this.setState({loading: true});
+            
+            let filiado = this.state;
+            filiado.is_send = undefined;
+            filiado.loading = undefined;
+    
+            api.post(`/filiado`, filiado, {
+            }).then(res => {
+    
+                this.setState({
+                    loading: false,
+                    is_send: true
+                });
+    
+            }).catch((error) => {
+                if (error.response.status == 401 || error.response.status == 403) {
+                    window.location = "/auth";
+                } else{
+                    // this.container.current.alertDanger();  
+                }
             });
+    
+            // this.setState({is_send: true});
+            console.log(this.state);
+        }
 
-        }).catch((error) => {
-            if (error.response.status == 401 || error.response.status == 403) {
-                window.location = "/auth";
-            } else{
-                // this.container.current.alertDanger();  
-            }
-        });
-
-        // this.setState({is_send: true});
-        console.log(this.state);
     }
     
 
@@ -153,7 +234,7 @@ class FilieSe extends React.Component{
     render(){
 
         return(
-            <ContainerPages innerMain={this.renderMain()} titulo="20 ANOS DE HISTÓRIA" subtitle="+ DE 1000 ASSOCIADOS" img="filiese/filiese.png" />
+            this.renderMain()
         );
     }
 
@@ -181,91 +262,87 @@ class FilieSe extends React.Component{
     }
    
     renderMain(){
-        let form = this.state.is_send ? <Fragment></Fragment> : <Form ref={ this.form } onSubmit={this.handleSubmit} lang="pt-br">
-                            <Row>
-                                <Col>
-                                    <Label for="nome">Nome</Label>
-                                    <Input 
-                                        value={this.state.nome} 
-                                        onChange={this.handleChange} 
-                                        type="text" 
-                                        name="nome" 
-                                        id="nome" 
-                                        placeholder="Digite seu Nome" 
-                                        required 
-                                        maxLength="800" 
-                                        data-message={'Digite um Nome Válido'}
-                                        onInvalid={this.handleValidity}
-                                    />
-                                </Col>
-                            </Row>
-                            <Row>
-                            <Col sm={7}>
-                                    <Label for="cpf">CPF</Label>
-                                    <Input 
-                                        required 
-                                        maxLength="14" 
-                                        mask="###.###.###-##" 
-                                        number="true" 
-                                        value={this.state.cpf} 
-                                        onChange={this.handleChange} 
-                                        type="text" 
-                                        name="cpf" 
-                                        id="cpf" 
-                                        placeholder="Digite seu CPF"
-                                        data-message={'Digite um CPF Válido'}
-                                        onInvalid={this.handleValidity}
-                                    />
-                                </Col>
-                                <Col sm={5}>
-                                    <Label for="matricula">Matrícula</Label>
-                                    <Input 
-                                        required 
-                                        maxLength="500" 
-                                        value={this.state.matricula} 
-                                        onChange={this.handleChange} 
-                                        type="text" 
-                                        name="matricula" 
-                                        id="matricula" 
-                                        placeholder="Digite sua Matrícula"  
-                                        data-message={'Digite uma Matrícula Válida'}
-                                        onInvalid={this.handleValidity}
-                                    />
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col sm={12} className='align-end-righti'>
-                                    <ButtonToggle type='submit' onClick={this.handleSubmit} color="success"> { this.state.loading ? <div className="spin-login"></div>: "Filie-se" }</ButtonToggle>
-                                </Col>
-                            </Row>
-                            {/* <Row>
-                                <Col sm={12} className='align-end-righti'>
-                                    <ButtonToggle type='button' onClick={this.setObject} color="info">{'PREENCHER'}</ButtonToggle>
-                                </Col>
-                            </Row> */}
-                        </Form>;
+        let form = this.state.is_send ? <Fragment></Fragment> : 
+            <form ref={ this.form } onSubmit={this.handleSubmit} lang="pt-br">
+                <div className="container-background-login">
+                    <div className="container-login">
+                        <header>
+                            <img src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""/>
+                            <h2>Novo cadastro <br/> de filiado.</h2>
+                            { this.state.errorMessage !== '' ? <div style={{marginBottom:'4px'}}>{this.renderSpan(this.state.errorMessage)}</div> : <Fragment></Fragment> }
+                        </header>
+
+                        <div className="row-login">
+                            <input type="text" autoComplete="new-nome" placeholder="Nome"  value={this.state.nome} name="nome" onChange={ this.handleChange }/>
+                            { this.state.messageErros['nome'].map(this.renderSpan) }
+                        </div>
+
+                        <div className="row-login">
+                            <input type="text" 
+                            required 
+                            mask="###.###.###-##" 
+                            number="true"
+                            name="cpf"
+                            value={this.state.cpf} 
+                            onChange={ this.handleChange } 
+                            placeholder="CPF"/>
+                            { this.state.messageErros['cpf'].map(this.renderSpan) }
+                        </div>
+                        <div className="row-login">
+                            <input number="true" type="text" autoComplete="new-password" placeholder="Matrícula"  value={this.state.matricula} name="matricula" onChange={ this.handleChange }/>
+                            { this.state.messageErros['matricula'].map(this.renderSpan) }
+                        </div>
+                        <div className="row-login">
+                            <input type="email" autoComplete="new-email" placeholder="E-mail"  value={this.state.email} name="email" onChange={ this.handleChange }/>
+                            { this.state.messageErros['email'].map(this.renderSpan) }
+                        </div>
+                        
+                        <button onClick={ this.state.loading ? ()=>{} : this.handleSubmit } className="btn-login">
+                            { this.state.loading ? <div className="spin-login"></div>: "Cadastrar" }
+                        </button>
+                        {/* <div className="esqueceu-senha">
+                            <span>Esqueceu sua senha?</span>
+                        </div> */}
+                        <div className="divider">
+                            <div className="line"></div>
+                            <span>OU</span>
+                            <div className="line"></div>
+                        </div>
+                        <button className="btn-cadastrar" onClick={ ()=>{window.location="/login"} }>Entrar</button>
+                    </div>
+                </div>
+            </form>;
         return  ( 
             <Fragment>
                 {
                     !this.state.is_send ? 
-                    <div className="title-filiese">
-                        <h1>FILIE-SE!</h1>
-                        <h6>BASTA PREENCHER A FICHA DE INSCRIÇÃO <br/> E LEVAREMOS OS DOCUMENTOS A ASSINAR ATÉ VOCÊ</h6>
-                        <div id="triangulo-para-baixo"></div>
-                    </div>
+                    form
                     :
-                    <div className="title-filiese send">
-                        <h1>ENVIADO</h1>
-                        <h6>O SINDICATO AGRADECE O INTERESSE <br/> EM SE UNIR A LUTA PELOS DIREITOS <br/> DO SERVIDOR PÚBLICO MUNICIPAL </h6>
-                        <h6 className="retorno">RETORNAREMOS O CONTATO EM BREVE</h6>
-                        <div className="message-retorno">
-                            SINDICATO FORTE SE FAZ <br/>
-                            COM PARTICIPAÇÃO POPULAR 
+                    <form>
+                        <div className="container-background-login">
+                            <div className="container-login">
+                                <header>
+                                    <img src={process.env.PUBLIC_URL + "/logo-SINDSMUT.png"} alt=""/>
+                                    <h2>Solicitação Enviada!</h2>
+                                    <h5 style={{textAlign: "center", margin: "10px 0 30px 0"}}>Você receberá um e-mail com os dados para login</h5>
+                                    { this.state.errorMessage !== '' ? <div style={{marginBottom:'4px'}}>{this.renderSpan(this.state.errorMessage)}</div> : <Fragment></Fragment> }
+                                </header>
+                                <div className="row-login">
+                                <button type='button' className="btn-cadastrar" onClick={ ()=>{window.location="/"} }>Voltar</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 }
-                {form}
+                
             </Fragment>
+        );
+    }
+
+    renderSpan(msg){
+        return(
+            <span className='login-msg'>{msg}</span>
         );
     }
 

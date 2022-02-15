@@ -38,7 +38,7 @@ class PrestacaoNews extends React.Component{
             id: this.props.match.params.id || null,
             path: null,
             file: null,
-            mes: null
+            mes: new Date().getMonth() + 1
         };
 
         this.container = React.createRef();
@@ -70,6 +70,7 @@ class PrestacaoNews extends React.Component{
                 }
             });
         }
+        console.log(this.state);
       }
 
       handleChange(event) {

@@ -20,7 +20,9 @@ class FilieseList extends React.Component{
             news: [],
             progressNews: true,
             message: false,
-            idRemove: null
+            messageAdd: false,
+            idRemove: null,
+            idValid: null
         }
 
         this.setMessageState = this.setMessageState.bind(this);
@@ -48,6 +50,7 @@ class FilieseList extends React.Component{
             <Fragment>
                 <Nav/>
                 {this.state.message ? this.onMessageDeleteFile() : <Fragment></Fragment>}
+                {this.state.messageAdd ? this.onMessageAddMatricula() : <Fragment></Fragment>}
                 <Container ref={this.container}  title="Filiados" footer={this.returnFooter()} main={this.returnList()}/>
             </Fragment>
         );
@@ -66,7 +69,7 @@ class FilieseList extends React.Component{
     }
 
     onClickView(id){
-        window.location = `/filiados/novos/${id}`;
+        window.location = `/cadastros/novos/${id}`;
     }
 
     returnList(){
@@ -97,7 +100,9 @@ class FilieseList extends React.Component{
                     
                     item.is_valid 
                         ? <Fragment></Fragment> 
-                        : <div title="Validar" onClick={ ()=>{this.onClickValidItem(item._id)} } style={{ background: "#2ECC40" }} className="acao"><FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faCheck} /></div>
+                        : <div title="Validar" onClick={ ()=>{this.setState({messageAdd: true, idValid: item._id});} } style={{ background: "#2ECC40" }} className="acao"><FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faCheck} /></div>
+                        // : <div title="Validar" onClick={ ()=>{this.onMessageAddMatricula(item._id)} } style={{ background: "#2ECC40" }} className="acao"><FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faCheck} /></div>
+                        // : <div title="Validar" onClick={ ()=>{this.onClickValidItem(item._id)} } style={{ background: "#2ECC40" }} className="acao"><FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faCheck} /></div>
                     }
                     {/* <div title="Editar" onClick={ ()=>{this.onClickEditItem(item._id)} } style={{ background: "#31708f" }} className="acao"><FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faEdit} /></div> */}
                     <div title="Visualizar" onClick={ ()=>this.onClickView(item._id) } style={{ background: "#ca540f" }} className="acao"><FontAwesomeIcon style={{ color: "#fff" }} className ='font-awesome' icon={faEye} /></div>
@@ -107,15 +112,15 @@ class FilieseList extends React.Component{
         );
     }
 
-    onClickValidItem(id){
+    onClickValidItem(codigo){
         
-        api.put(`/filiese/valid/${id}`, {}, {
+        api.put(`/filiese/valid/${this.state.idValid}/${codigo}`, {}, {
         }).then(res => {
             
             this.container.current.alertSucces();
-            let index = this.state.news.findIndex( item => item._id == id );
+            let index = this.state.news.findIndex( item => item._id == this.state.idValid );
             this.state.news[index].is_valid = true;
-            this.setState({ news: this.state.news, message: false });
+            this.setState({ news: this.state.news, message: false, messageAdd: false, idRemove: null, idValid: null  });
 
         }).catch((error) => {
             if (error.response.status == 401 || error.response.status == 403) {
@@ -132,6 +137,9 @@ class FilieseList extends React.Component{
     }
     onCancel(){
         this.setState({message: false});
+    }
+    onCancelAddMatricula(){
+        this.setState({messageAdd: false});
     }
 
     deleteNews(){
@@ -170,6 +178,24 @@ class FilieseList extends React.Component{
         </SweetAlert>
         );
       }
+
+    onMessageAddMatricula(){
+        return (
+            <SweetAlert
+            input
+            showCancel
+            required
+            cancelBtnBsStyle="light"
+            validationMsg="Digite a Matrícula"
+            title="Informe a Matrícula do Novo Filiado!"
+            placeHolder="matricula"
+            onConfirm={(response) => this.onClickValidItem(response)}
+            onCancel={this.onCancelAddMatricula.bind(this)}
+          >
+            matricula:
+          </SweetAlert>
+        );
+    }
 
     returnListHeader(){
         return(

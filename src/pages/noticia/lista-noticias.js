@@ -51,7 +51,29 @@ class ListaNoticias extends React.Component{
         );
     }
 
+    renderNotice( key, value, img){
+        return <div class="col-lg-6 col-sm-6 col-xs-12">
+            <div class="news-post-widget" onClick={()=>{window.location=`/noticia/${value._id}`}}>
+            <img loading="lazy" class="img-responsive" src={img} alt=""/>
+            <div class="news-post-detail">
+                <span class="date">{formatDateWithNameMes(value.createdAt)}</span>
+                <h2><a>{value.name.length > 53 ? value.name.substring(0, 53) +'...' : value.name}</a></h2>
+                <p dangerouslySetInnerHTML={{ __html: value.description }}></p>
+            </div>
+            </div>
+        </div>
+    }
+
+    renderNoticeRow( array ){
+        return (
+            <div class="row">
+                {array}                        
+            </div>
+        );
+    }
+
     renderMain(){
+        let arrayItens = [];
         return(
             <Fragment>
                 
@@ -62,17 +84,13 @@ class ListaNoticias extends React.Component{
                             <div class="news-post-holder">
 
                             { this.state.news.map( (value, key) => {
+                                
                                 let img = this.state.progressNews ? '' : `${window._env_.storage}/news/${value.path}/${value.file}`;
-                                return <div class="col-lg-6 col-sm-6 col-xs-12">
-                                    <div class="news-post-widget" onClick={()=>{window.location=`/noticia/${value._id}`}}>
-                                    <img loading="lazy" class="img-responsive" src={img} alt=""/>
-                                    <div class="news-post-detail">
-                                        <span class="date">{formatDateWithNameMes(value.createdAt)}</span>
-                                        <h2><a>{value.name}</a></h2>
-                                        <p dangerouslySetInnerHTML={{ __html: value.description }}></p>
-                                    </div>
-                                    </div>
-                                </div>
+                                arrayItens.push( this.renderNotice( key, value, img ) )
+
+                                return arrayItens.length == 2 ? <div class="row">
+                                    {this.renderNoticeRow(arrayItens)}
+                                </div> : <></>
                             })}
 
                             </div>

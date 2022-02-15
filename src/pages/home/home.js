@@ -39,7 +39,10 @@ class Home extends React.Component{
         return(
             <div>
                 <Menu/>
-                <Slide/>
+                {/* <Slide/> */}
+                <div className="slide">
+                    <img loading='lazy' style={{width: "100%"}} src={`${process.env.PUBLIC_URL + "/Outdoor.jpg"}`} alt="" />
+                </div>
                 <Articles titulo={"Ú\ltimas Notícias"} component={ulNotices} />
                 <Articles style={{display: "flex"}} titulo={"YouTube do Sindsmut"} component={this.getComponentVideo()} />
                 <Footer/>
@@ -50,7 +53,7 @@ class Home extends React.Component{
     getComponentVideo(){
         return(
             <div className="youtube-container">
-                <iframe width="75%" height="350vh" src="https://www.youtube.com/embed/ERrcNyQtNng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe className='video-youtube' src="https://www.youtube.com/embed/x83-baGaSrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         );
     }
