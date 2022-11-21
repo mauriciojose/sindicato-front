@@ -32,15 +32,15 @@ class Nav extends React.Component{
         return [
             {
                 title: "Diretoria",
-                href: "/diretoria"
+                href: "/diretorias"
             },
             {
                 title: "Estatuto",
-                href: "/diretoria"
+                href: "/diretorias"
             },
             // {
             //     title: "Regime Interno",
-            //     href: "/diretoria"
+            //     href: "/diretorias"
             // }
         ];
     }

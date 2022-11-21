@@ -22,7 +22,7 @@ class Footer extends React.Component{
                     {/* <p>&copy;Copyright Sindismut Tucano, 2021</p> */}
                 </div>
                 <div className="element-smaller">
-                    <a href="/diretoria"><b>O SINDICATO</b></a>
+                    <a href="/diretorias"><b>O SINDICATO</b></a>
                     {/* <a href="/servicos"><b>SERVIÇOS</b></a> */}
                     <a href="/noticias"><b>NOTÍCIAS</b></a>
                     <a href="/gallery/list"><b>GALERIA</b></a>
@@ -51,7 +51,7 @@ class Footer extends React.Component{
                         <a href="/login">
                             <b>ÁREA DO FILIADO</b>
                         </a>
-                        <a href="/filiese">
+                        <a href="/filieses">
                             <b>FILIE-SE</b>
                         </a>
                     </div>

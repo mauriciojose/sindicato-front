@@ -58,7 +58,7 @@ class navNew extends React.Component{
         return [
             {
                 title: "Diretoria",
-                href: "/diretoria"
+                href: "/diretorias"
             },
             {
                 title: "Estatuto",
@@ -70,7 +70,7 @@ class navNew extends React.Component{
             // },
             {
                 title: "História",
-                href: "/historia"
+                href: "/historias"
             }
         ];
     }

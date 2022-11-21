@@ -35,7 +35,7 @@ class Menu extends React.Component{
                         </div>
                         <div className="filie">
                             <a className="filie-a" href="/login">ÁREA DO FILIADO</a>
-                            <a className="filie-a" href="/filiese">FILIE-SE</a>
+                            <a className="filie-a" href="/filieses">FILIE-SE</a>
                         </div>
                     </div>
                 </header>

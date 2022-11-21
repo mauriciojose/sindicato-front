@@ -67,16 +67,16 @@ ReactDOM.render(
     <Switch>
       <Route path="/" exact={true} component={Home} />
 
-      <Route path="/diretoria" exact={true} component={Diretoria} />
-      <Route path="/historia" exact={true} component={Historia} />
+      <Route path="/diretorias" exact={true} component={Diretoria} />
+      <Route path="/historias" exact={true} component={Historia} />
       <Route path="/regime/:tipo" exact={true} component={Regime} />
 
       <Route path="/servicos" exact={true} component={Servicos} />
       <Route path="/contacts" exact={true} component={Contato}/>
 
       
-      <Route path="/filiese" exact={true} component={FilieSe} />
-      <Route path="/filiado" exact={true} component={Filiado} />
+      <Route path="/filieses" exact={true} component={FilieSe} />
+      <Route path="/filiados" exact={true} component={Filiado} />
 
       <PrivateRoute path="/gallery/create" component={FormGallery} />
 
